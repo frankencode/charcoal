@@ -2,6 +2,6 @@ h1. Welcome to 'charcoal'!
 
 p. The project that will make your code shine bright.
 
-p. Currently we are still in bootstrap mode. So don't expect to much for now.
+p. Currently we are still in bootstrap mode. So don't expect too much for now.
 
 p. Copyright 2009-2010 Frank Mertens. See more in License.html.
