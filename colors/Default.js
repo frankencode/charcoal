@@ -18,6 +18,7 @@ charcoal.colors["Default"] =
 		"BrightMagenta": "#FF00FF",
 		"BrightCyan"   : "#00FFFF",
 		"BrightWhite"  : "#404040",
-		"Selection"    : "#CCE5FF"
+		"Selection"    : "#CCE5FF",
+		"Match"        : "#FFFF66"
 	}
 };
