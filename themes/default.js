@@ -18,7 +18,7 @@ lightGray   = "#c0c0c0";
 
 charcoal.themes["Default"] =
 {
-	displayName: "Default",
+	displayName: "Black on White",
 	
 	layers: {
 		"ruby": {
@@ -82,6 +82,18 @@ charcoal.themes["Default"] =
 			"TypeKeyword": darkRed,
 			"QtKeyword": { color: blue, bold: true },
 			"ObjcKeyword": { color: blue, bold: true },
+			"Integer": blue,
+			"Float": darkMagenta,
+			"Char": magenta
+		},
+		"dao": {
+			"BlockComment": darkGray,
+			"LineComment": darkGray,
+			"EscapedChar": magenta,
+			"String": red,
+			"Keyword": { color: black, bold: true },
+			"CoreTypes": darkRed,
+			"Builtin": { color: darkBlue, bold: true },
 			"Integer": blue,
 			"Float": darkMagenta,
 			"Char": magenta

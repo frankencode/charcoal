@@ -27,11 +27,11 @@ RBFloat = '#EDDD3D';
 RBKeyword = '#F8BB00';
 RBJavascriptKeyword = '#F8BB00';
 RBObjcKeyword = '#F8BB00';
-RBPreprocessing = '#FFFFFF';
+RBPreprocessing = '#468434';
 RBRubyClassName = '#FFFFFF';
 RBConstantName = '#8AA6C1';
 RBBuiltinConstant = '#8AA6C1';
-RBCharacterConstant = '#8AA6C1';
+RBCharacterConstant = '#CA4344';
 RBEscape = '#EDDD37';
 RBBlock = '#FFFFFF';
 RBSymbol = '#B53B3C';
@@ -43,8 +43,6 @@ RBRubyGlobalVariable = '#FFFFFF';
 RBPunctuator = '#FFFFFF';
 RBOperator = '#8AA6C1';
 RBArrayBracket = '#FFFFFF';
-RBBackslashSequence = '#FFFFFF';
-RBTag = '#FFFFFF';
 RBTagName = '#FFFFFF';
 RBTagOpen = '#FFFFFF';
 RBTagClose = '#FFFFFF';
@@ -101,7 +99,7 @@ charcoal.themes["Ruby Blue"] =
 			"HexIntegerLiteral": RBNumber,
 			"StringLiteral": RBStringLiteral,
 			"EscapeSequence": RBEscape,
-			"BackslashSequence": RBBackslashSequence,
+			"BackslashSequence": RBEscape,
 			"RegularExpressionLiteral": RBRegularExpression,
 			"Punctuator" : RBPunctuator,
 			"DivPunctuator" : RBPunctuator
@@ -123,20 +121,32 @@ charcoal.themes["Ruby Blue"] =
 		"cxx": {
 			"BlockComment": RBBlockComment,
 			"LineComment": RBComment,
-			"PreprocessingComment": RBComment,
+			"PreprocessingComment": RBBlockComment,
 			"Preprocessing": RBPreprocessing,
 			"EscapedChar": RBEscape,
 			"String": RBStringLiteral,
 			"ObjcEscapedChar": RBEscape,
 			"ObjcString": RBStringLiteral,
 			"Keyword": RBKeyword,
-			"TypeKeyword": RBKeyword,
+			"TypeKeyword": RBObjcKeyword,
 			"QtKeyword": RBKeyword,
 			"ObjcKeyword": RBObjcKeyword,
 			"Integer": RBInteger,
 			"Float": RBFloat,
 			"Char": RBCharacterConstant,
 			"Punctuator" : RBPunctuator
+		},
+		"dao": {
+			"BlockComment": RBBlockComment,
+			"LineComment": RBComment,
+			"EscapedChar": RBEscape,
+			"String": RBStringLiteral,
+			"Keyword": RBKeyword,
+			"CoreTypes": RBObjcKeyword,
+			"Builtin": RBBuiltinConstant,
+			"Integer": RBInteger,
+			"Float": RBFloat,
+			"Char": RBCharacterConstant
 		},
 		"bash": {
 			"Comment": RBComment,

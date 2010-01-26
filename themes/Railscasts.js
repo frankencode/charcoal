@@ -27,12 +27,12 @@ RCFloat = '#A5C261';
 RCKeyword = '#CC7833';
 RCJavascriptKeyword = '#CC7833';
 RCObjcKeyword = '#FFC66D';
-RCPreprocessing = '#E6E1DC';
+RCPreprocessing = '#519F50';
 RCRubyClassName = '#E6E1DC';
 RCConstantName = '#DA4939';
 RCBuiltinConstant = '#6E9CBE';
-RCCharacterConstant = '#6D9CBE';
-RCEscape = '#FFFFFF';
+RCCharacterConstant = '#A5C261';
+RCEscape = '#519F50';
 RCBlock = '#E6E1DC';
 RCSymbol = '#6D9CBE';
 RCVariable = '#D0D0FF';
@@ -43,7 +43,6 @@ RCRubyGlobalVariable = '#D0D0FF';
 RCPunctuator = '#FFFFFF';
 RCOperator = '#CC7833';
 RCArrayBracket = '#E6E1DC';
-RCBackslashSequence = '#E6E1DC';
 RCTagName = '#E8BF6A';
 RCTagOpen = '#E8BF6A';
 RCTagClose = '#E8BF6A';
@@ -100,7 +99,7 @@ charcoal.themes["Railscasts"] =
 			"HexIntegerLiteral": RCNumber,
 			"StringLiteral": RCStringLiteral,
 			"EscapeSequence": RCEscape,
-			"BackslashSequence": RCBackslashSequence,
+			"BackslashSequence": RCEscape,
 			"RegularExpressionLiteral": RCRegularExpression,
 			"Punctuator" : RCPunctuator,
 			"DivPunctuator" : RCPunctuator
@@ -122,20 +121,32 @@ charcoal.themes["Railscasts"] =
 		"cxx": {
 			"BlockComment": RCBlockComment,
 			"LineComment": RCComment,
-			"PreprocessingComment": RCComment,
+			"PreprocessingComment": RCBlockComment,
 			"Preprocessing": RCPreprocessing,
 			"EscapedChar": RCEscape,
 			"String": RCStringLiteral,
 			"ObjcEscapedChar": RCEscape,
 			"ObjcString": RCStringLiteral,
 			"Keyword": RCKeyword,
-			"TypeKeyword": RCKeyword,
+			"TypeKeyword": RCObjcKeyword,
 			"QtKeyword": RCKeyword,
 			"ObjcKeyword": RCObjcKeyword,
 			"Integer": RCInteger,
 			"Float": RCFloat,
 			"Char": RCCharacterConstant,
 			"Punctuator" : RCPunctuator
+		},
+		"dao": {
+			"BlockComment": RCBlockComment,
+			"LineComment": RCComment,
+			"EscapedChar": RCEscape,
+			"String": RCStringLiteral,
+			"Keyword": RCKeyword,
+			"CoreTypes": RCObjcKeyword,
+			"Builtin": RCBuiltinConstant,
+			"Integer": RCInteger,
+			"Float": RCFloat,
+			"Char": RCCharacterConstant
 		},
 		"bash": {
 			"Comment": RCComment,

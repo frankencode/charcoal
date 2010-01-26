@@ -425,11 +425,14 @@ charcoal.syntax["ruby"] = function()
 	);
 	
 	DEFINE("ConstantName",
-		REPEAT(1,
-			CHOICE(
-				RANGE('A', 'Z'),
-				CHAR('_'),
-				RANGE('0', '9')
+		GLUE(
+			RANGE('A', 'Z'),
+			REPEAT(1,
+				CHOICE(
+					RANGE('A', 'Z'),
+					CHAR('_'),
+					RANGE('0', '9')
+				)
 			)
 		)
 	);

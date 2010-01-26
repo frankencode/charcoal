@@ -27,12 +27,12 @@ RLFloat = '#0900D3';
 RLKeyword = '#006A08';
 RLJavascriptKeyword = '#006A08';
 RLObjcKeyword = '#820095';
-RLPreprocessing = '#000000';
+RLPreprocessing = '#26B31A';
 RLRubyClassName = '#000000';
 RLConstantName = '#A62B29';
 RLBuiltinConstant = '#0000CD';
-RLCharacterConstant = '#A62B29';
-RLEscape = '#000000';
+RLCharacterConstant = '#0E8D90';
+RLEscape = '#26B31A';
 RLBlock = '#000000';
 RLSymbol = '#A62B29';
 RLVariable = '#7E3700';
@@ -43,7 +43,6 @@ RLRubyGlobalVariable = '#7E3700';
 RLPunctuator = '#000000';
 RLOperator = '#006A08';
 RLArrayBracket = '#000000';
-RLBackslashSequence = '#000000';
 RLTagName = '#2D439B';
 RLTagOpen = '#2D439B';
 RLTagClose = '#2D439B';
@@ -100,7 +99,7 @@ charcoal.themes["Ryan Light"] =
 			"HexIntegerLiteral": RLNumber,
 			"StringLiteral": RLStringLiteral,
 			"EscapeSequence": RLEscape,
-			"BackslashSequence": RLBackslashSequence,
+			"BackslashSequence": RLEscape,
 			"RegularExpressionLiteral": RLRegularExpression,
 			"Punctuator" : RLPunctuator,
 			"DivPunctuator" : RLPunctuator
@@ -122,20 +121,32 @@ charcoal.themes["Ryan Light"] =
 		"cxx": {
 			"BlockComment": RLBlockComment,
 			"LineComment": RLComment,
-			"PreprocessingComment": RLComment,
+			"PreprocessingComment": RLBlockComment,
 			"Preprocessing": RLPreprocessing,
 			"EscapedChar": RLEscape,
 			"String": RLStringLiteral,
 			"ObjcEscapedChar": RLEscape,
 			"ObjcString": RLStringLiteral,
 			"Keyword": RLKeyword,
-			"TypeKeyword": RLKeyword,
+			"TypeKeyword": RLObjcKeyword,
 			"QtKeyword": RLKeyword,
 			"ObjcKeyword": RLObjcKeyword,
 			"Integer": RLInteger,
 			"Float": RLFloat,
 			"Char": RLCharacterConstant,
 			"Punctuator" : RLPunctuator
+		},
+		"dao": {
+			"BlockComment": RLBlockComment,
+			"LineComment": RLComment,
+			"EscapedChar": RLEscape,
+			"String": RLStringLiteral,
+			"Keyword": RLKeyword,
+			"CoreTypes": RLObjcKeyword,
+			"Builtin": RLBuiltinConstant,
+			"Integer": RLInteger,
+			"Float": RLFloat,
+			"Char": RLCharacterConstant
 		},
 		"bash": {
 			"Comment": RLComment,

@@ -28,13 +28,13 @@ GHFloat = '#009999';
 GHKeyword = {color: '#000000', bold: true};
 GHJavascriptKeyword = {color: '#000000', bold: true};
 GHObjcKeyword = {color: '#000000', bold: true};
-GHPreprocessing = '#000000';
+GHPreprocessing = '#DD1144';
 GHRubyClassName = {color: '#445588', bold: true};
 GHConstantName = '#008080';
 GHBuiltinConstant = {color: '#000000', bold: true};
 GHCharacterConstant = '#DD1144';
-GHEscape = '#666666';
-GHBlock = '#000000';
+GHEscape = '#DD1144';
+GHBlock = {color: '#000000', bold: true};
 GHSymbol = '#990073';
 GHVariable = '#0086B3';
 GHRubyVariable = '#0086B3';
@@ -43,9 +43,7 @@ GHRubyClassVariable = '#0086B3';
 GHRubyGlobalVariable = '#0086B3';
 GHPunctuator = '#666666';
 GHOperator = {color: '#000000', bold: true};
-GHArrayBracket = '#000000';
-GHBackslashSequence = '#000000';
-GHTag = '#000000';
+GHArrayBracket = {color: '#000000', bold: true};
 GHTagName = '#000080';
 GHTagOpen = '#000000';
 GHTagClose = '#000000';
@@ -102,7 +100,7 @@ charcoal.themes["GitHub"] =
 			"HexIntegerLiteral": GHNumber,
 			"StringLiteral": GHStringLiteral,
 			"EscapeSequence": GHEscape,
-			"BackslashSequence": GHBackslashSequence,
+			"BackslashSequence": GHEscape,
 			"RegularExpressionLiteral": GHRegularExpression,
 			"Punctuator" : GHPunctuator,
 			"DivPunctuator" : GHPunctuator
@@ -124,20 +122,32 @@ charcoal.themes["GitHub"] =
 		"cxx": {
 			"BlockComment": GHBlockComment,
 			"LineComment": GHComment,
-			"PreprocessingComment": GHComment,
+			"PreprocessingComment": GHBlockComment,
 			"Preprocessing": GHPreprocessing,
 			"EscapedChar": GHEscape,
 			"String": GHStringLiteral,
 			"ObjcEscapedChar": GHEscape,
 			"ObjcString": GHStringLiteral,
 			"Keyword": GHKeyword,
-			"TypeKeyword": GHKeyword,
+			"TypeKeyword": GHObjcKeyword,
 			"QtKeyword": GHKeyword,
 			"ObjcKeyword": GHObjcKeyword,
 			"Integer": GHInteger,
 			"Float": GHFloat,
 			"Char": GHCharacterConstant,
 			"Punctuator" : GHPunctuator
+		},
+		"dao": {
+			"BlockComment": GHBlockComment,
+			"LineComment": GHComment,
+			"EscapedChar": GHEscape,
+			"String": GHStringLiteral,
+			"Keyword": GHKeyword,
+			"CoreTypes": GHObjcKeyword,
+			"Builtin": GHBuiltinConstant,
+			"Integer": GHInteger,
+			"Float": GHFloat,
+			"Char": GHCharacterConstant
 		},
 		"bash": {
 			"Comment": GHComment,
