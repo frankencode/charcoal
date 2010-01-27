@@ -1,5 +1,12 @@
 charcoal.syntax["plain"] = function()
 {
-	DEFINE("PlainText");
+	DEFINE("Line", FIND(CHAR('\n')));
+	
+	DEFINE("PlainText",
+		REPEAT(
+			REF("Line")
+		)
+	);
+	
 	ENTRY("PlainText");
 }
