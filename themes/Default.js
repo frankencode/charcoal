@@ -34,13 +34,7 @@ charcoal.themes["Default"] =
 			"Document": darkGreen,
 			"Integer": blue,
 			"Float": magenta,
-			"Symbol": darkCyan,
-			"LocalName": black,
-			"MemberName": darkMagenta,
-			"ClassMemberName": darkMagenta,
-			"ClassName": blue,
-			"ConstantName": blue,
-			"GlobalName": { color: black, bold: true }
+			"Symbol": darkCyan
 		},
 		"python": {
 			"Comment": darkGray,
