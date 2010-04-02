@@ -185,11 +185,7 @@ charcoal.syntax["css"] = function()
 		)
 	);
 	
-<<<<<<< .merge_file_nobgmC
 	DEFINE_VOID("Name",
-=======
-	DEFINE_VOID("Identifier",
->>>>>>> .merge_file_SWl3Wx
 		GLUE(
 			CHOICE(
 				RANGE('a', 'z'),
@@ -208,20 +204,12 @@ charcoal.syntax["css"] = function()
 	);
 	
 	DEFINE("UnknownProperty",
-<<<<<<< .merge_file_nobgmC
 		INLINE("Name")
-=======
-		INLINE("Identifier")
->>>>>>> .merge_file_SWl3Wx
 	);
 	
 	DEFINE("String",
 		CHOICE(
-<<<<<<< .merge_file_nobgmC
 			INLINE("Name"),
-=======
-			INLINE("Identifier"),
->>>>>>> .merge_file_SWl3Wx
 			GLUE(
 				AHEAD(RANGE("\"'")),
 				GETCHAR("quotationMark"),
@@ -344,13 +332,9 @@ charcoal.syntax["css"] = function()
 				CHOICE(
 					REPEAT(1, RANGE(" \t\n\r\f")),
 					REF("Comment"),
-<<<<<<< .merge_file_nobgmC
 					REF("Block"),
 					REF("Rule"),
 					REF("Selector")
-=======
-					REF("Block")
->>>>>>> .merge_file_SWl3Wx
 				)
 			)
 		)
