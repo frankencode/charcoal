@@ -55,6 +55,32 @@ charcoal.themes["Default"] =
 			"BackslashSequence": darkYellow,
 			"RegularExpressionLiteral": darkMagenta
 		},
+		"haxe": {
+			"Comment": darkGray,
+			"String": red,
+			"RegExp": darkMagenta,
+			"EscapedChar": magenta,
+			"AnyEscapedChar": magenta,
+			"Macro": darkGreen,
+			"Keyword": { color: black, bold: true },
+			"Class": darkBlue,
+			// "Identifier": black,
+			// "Operator": black,
+			"Float": magenta,
+			"Integer": blue
+		},
+		"css": {
+			"Comment": darkGray,
+			"Property": darkGreen,
+			"UnknownProperty": darkRed,
+			"Value": blue,
+			"Unit": blue,
+			"Tag": black,
+			"Class": darkBlue,
+			"PseudoClass": darkCyan,
+			"Id": darkMagenta,
+			"Rule": darkGreen
+		},
 		"xml": {
 			"Comment": darkGray,
 			"TagName": { color: black, bold: true },
@@ -109,6 +135,22 @@ charcoal.themes["Default"] =
 			"Builtin": darkBlue,
 			"Reserved": { color: black, bold: true },
 			"Integer": blue
+		},
+		"cmake": {
+			"Comment": darkGray,
+			"Command": { color: black, bold: true },
+			"Function": { color: darkBlue, bold: true },
+			"Expansion": darkMagenta,
+			"String": darkGreen,
+			"Version": blue,
+			"Boolean": blue,
+			"Number": blue
+		},
+		"sql": {
+			"Comment": darkGray,
+			"String": darkGreen,
+			"EscapeSequence": darkYellow,
+			"Number": blue
 		}
 	},
 	
