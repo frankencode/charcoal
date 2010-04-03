@@ -12,24 +12,28 @@ charcoal.syntax["css"] = function()
 	);
 	
 	DEFINE("Integer",
-		CHOICE(
-			GLUE(
-				STRING("0x"),
-				REPEAT(1,
-					CHOICE(
-						RANGE('0', '9'),
-						RANGE('a', 'f'),
-						RANGE('A', 'F')
+		GLUE(
+			REPEAT(0, 1, RANGE("+-")),
+			CHOICE(
+				GLUE(
+					STRING("0x"),
+					REPEAT(1,
+						CHOICE(
+							RANGE('0', '9'),
+							RANGE('a', 'f'),
+							RANGE('A', 'F')
+						)
 					)
-				)
-			),
-			GLUE(CHAR('0'), REPEAT(1, RANGE('0', '7'))),
-			REPEAT(1, RANGE('0', '9'))
+				),
+				GLUE(CHAR('0'), REPEAT(1, RANGE('0', '7'))),
+				REPEAT(1, RANGE('0', '9'))
+			)
 		)
 	);
 	
 	DEFINE("Float",
 		GLUE(
+			REPEAT(0, 1, CHAR('-')),
 			CHOICE(
 				GLUE(
 					REPEAT(1, RANGE('0', '9')),
