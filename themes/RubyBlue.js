@@ -223,7 +223,7 @@ charcoal.themes["Ruby Blue"] =
 		lineNumbers: "#808080",
 		lineNumbersBright: "#000",
 		lineNumbersBackground: "#F2F2F2",
-		lineNumbersBackgroundBright: "#E5E5E5",
+		// lineNumbersBackgroundBright: "#E5E5E5",
 		selection: RBEditorSelection,
 		match: RBEditorMatch,
 		bracketMatch: RBEditorBracketMatch,

@@ -33,7 +33,7 @@ charcoal.syntax["css"] = function()
 	
 	DEFINE("Float",
 		GLUE(
-			REPEAT(0, 1, CHAR('-')),
+			REPEAT(0, 1, RANGE("+-")),
 			CHOICE(
 				GLUE(
 					REPEAT(1, RANGE('0', '9')),

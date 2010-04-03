@@ -223,7 +223,7 @@ charcoal.themes["Ryan Light"] =
 		lineNumbers: "#808080",
 		lineNumbersBright: "#000",
 		lineNumbersBackground: "#F2F2F2",
-		lineNumbersBackgroundBright: "#E5E5E5",
+		// lineNumbersBackgroundBright: "#E5E5E5",
 		selection: RLEditorSelection,
 		match: RLEditorMatch,
 		bracketMatch: RLEditorBracketMatch,
