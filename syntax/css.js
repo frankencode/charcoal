@@ -234,8 +234,8 @@ charcoal.syntax["css"] = function()
 				REPEAT(1,
 					GLUE(
 						CHOICE(
-							REF("String"),
-							REF("Number")
+							REF("Number"),
+							REF("String")
 						),
 						REPEAT(0, RANGE(" \t")),
 						REPEAT(0, 1, REF("Unit")),
