@@ -38,13 +38,16 @@ charcoal.syntax["haxe"] = function()
 	);
 	
 	DEFINE("Keyword",
-		KEYWORD("\
-			function class static var if else while do for \
-			break return continue extends implements import \
-			switch case default public private try untyped \
-			catch new this throw extern enum in interface \
-			cast override dynamic typedef package callback \
-			inline using"
+		GLUE(
+			KEYWORD("\
+				function class static var if else while do for \
+				break return continue extends implements import \
+				switch case default public private try untyped \
+				catch new this throw extern enum in interface \
+				cast override dynamic typedef package callback \
+				inline using"
+			),
+			NOT(INLINE("Identifier"))
 		)
 	);
 	
