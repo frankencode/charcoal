@@ -128,6 +128,10 @@ charcoal.syntax["haxe"] = function()
 		)
 	);
 	
+	DEFINE("Boolean",
+		KEYWORD("true false")
+	);
+	
 	DEFINE("Integer",
 		CHOICE(
 			GLUE(
@@ -242,7 +246,8 @@ charcoal.syntax["haxe"] = function()
 					REF("Identifier"),
 					REF("Operator"),
 					REF("Float"),
-					REF("Integer")
+					REF("Integer"),
+					REF("Boolean")
 				)
 			)
 		)

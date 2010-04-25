@@ -61,6 +61,16 @@ charcoal.themes["Default"] =
 			"BackslashSequence": darkYellow,
 			"RegularExpressionLiteral": darkMagenta
 		},
+		"as3": {
+			"Comment": darkGray,
+			"ReservedWord": { color: black, bold: true },
+			"DecimalLiteral": blue,
+			"HexIntegerLiteral": magenta,
+			"StringLiteral": darkGreen,
+			"EscapeSequence": darkYellow,
+			"BackslashSequence": darkYellow,
+			"RegularExpressionLiteral": darkMagenta
+		},
 		"haxe": {
 			"Comment": darkGray,
 			"String": red,
@@ -74,6 +84,12 @@ charcoal.themes["Default"] =
 			// "Operator": black,
 			"Float": magenta,
 			"Integer": blue
+		},
+		"tex": {
+			"Comment": darkGray,
+			"Command": darkBlue,
+			"Number": darkMagenta,
+			"Argument": blue
 		},
 		"css": {
 			"Comment": darkGray,
