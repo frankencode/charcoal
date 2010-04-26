@@ -116,6 +116,16 @@ charcoal.themes["Ruby Blue"] =
 			"Punctuator" : RBPunctuator,
 			"DivPunctuator" : RBPunctuator
 		},
+		"as3": {
+			"Comment": RBComment,
+			"ReservedWord": RBJavascriptKeyword,
+			"DecimalLiteral": RBNumber,
+			"HexIntegerLiteral": RBNumber,
+			"StringLiteral": RBStringLiteral,
+			"EscapeSequence": RBEscape,
+			"BackslashSequence": RBEscape,
+			"RegularExpressionLiteral": RBRegularExpression
+		},
 		"haxe": {
 			"Comment": RBComment,
 			"String": RBStringLiteral,
@@ -129,6 +139,12 @@ charcoal.themes["Ruby Blue"] =
 			"Operator": RBOperator,
 			"Float": RBFloat,
 			"Integer": RBInteger
+		},
+		"tex": {
+			"Comment": RBComment,
+			"Command": RBEscape,
+			"Number": RBNumber,
+			"Argument": RBVariable
 		},
 		"css": {
 			"Comment": RBComment,

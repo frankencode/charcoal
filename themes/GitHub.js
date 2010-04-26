@@ -117,6 +117,16 @@ charcoal.themes["GitHub"] =
 			"Punctuator" : GHPunctuator,
 			"DivPunctuator" : GHPunctuator
 		},
+		"as3": {
+			"Comment": GHComment,
+			"ReservedWord": GHJavascriptKeyword,
+			"DecimalLiteral": GHNumber,
+			"HexIntegerLiteral": GHNumber,
+			"StringLiteral": GHStringLiteral,
+			"EscapeSequence": GHEscape,
+			"BackslashSequence": GHEscape,
+			"RegularExpressionLiteral": GHRegularExpression
+		},
 		"haxe": {
 			"Comment": GHComment,
 			"String": GHStringLiteral,
@@ -130,6 +140,12 @@ charcoal.themes["GitHub"] =
 			"Operator": GHOperator,
 			"Float": GHFloat,
 			"Integer": GHInteger
+		},
+		"tex": {
+			"Comment": GHComment,
+			"Command": GHCommand,
+			"Number": GHNumber,
+			"Argument": GHVariable
 		},
 		"css": {
 			"Comment": GHComment,

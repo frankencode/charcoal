@@ -116,6 +116,16 @@ charcoal.themes["Ryan Light"] =
 			"Punctuator" : RLPunctuator,
 			"DivPunctuator" : RLPunctuator
 		},
+		"as3": {
+			"Comment": RLComment,
+			"ReservedWord": RLJavascriptKeyword,
+			"DecimalLiteral": RLNumber,
+			"HexIntegerLiteral": RLNumber,
+			"StringLiteral": RLStringLiteral,
+			"EscapeSequence": RLEscape,
+			"BackslashSequence": RLEscape,
+			"RegularExpressionLiteral": RLRegularExpression
+		},
 		"haxe": {
 			"Comment": RLComment,
 			"String": RLStringLiteral,
@@ -129,6 +139,12 @@ charcoal.themes["Ryan Light"] =
 			"Operator": RLOperator,
 			"Float": RLFloat,
 			"Integer": RLInteger
+		},
+		"tex": {
+			"Comment": RLComment,
+			"Command": RLEscape,
+			"Number": RLNumber,
+			"Argument": RLVariable
 		},
 		"css": {
 			"Comment": RLComment,
