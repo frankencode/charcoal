@@ -45,7 +45,7 @@ charcoal.syntax["haxe"] = function()
 				switch case default public private try untyped \
 				catch new this throw extern enum in interface \
 				cast override dynamic typedef package callback \
-				inline using"
+				inline using super"
 			),
 			NOT(INLINE("Identifier"))
 		)
@@ -59,7 +59,7 @@ charcoal.syntax["haxe"] = function()
 					CHAR('('),
 					FIND(CHAR(')'))
 				),
-				REF("Identifier")
+				REF("SimpleIdentifier")
 			)
 		)
 	);
@@ -75,11 +75,11 @@ charcoal.syntax["haxe"] = function()
 				),
 				KEYWORD("else end error line")
 			),
-			NOT(INLINE("Identifier"))
+			NOT(INLINE("SimpleIdentifier"))
 		)
 	);
 	
-	DEFINE("Class",
+	DEFINE("TypeIdentifier",
 		GLUE(
 			REPEAT(
 				GLUE(
@@ -87,12 +87,12 @@ charcoal.syntax["haxe"] = function()
 					CHAR('.')
 				)
 			),
-			AHEAD(RANGE('A', 'Z')),
+			// AHEAD(RANGE('A', 'Z')),
 			REF("Identifier")
 		)
 	);
 	
-	DEFINE("Identifier",
+	DEFINE_VOID("SimpleIdentifier",
 		GLUE(
 			CHOICE(
 				RANGE('a', 'z'),
@@ -110,13 +110,39 @@ charcoal.syntax["haxe"] = function()
 		)
 	);
 	
+	DEFINE("Identifier",
+		GLUE(
+			INLINE("SimpleIdentifier"),
+			REPEAT(
+				GLUE(
+					REPEAT(INLINE("Whitespace")),
+					CHAR('<'),
+					REPEAT(
+						GLUE(
+							NOT(CHAR('>')),
+							CHOICE(
+								REPEAT(1, INLINE("Whitespace")),
+								REF("Identifier"),
+								REF("Keyword"),
+								REF("Macro"),
+								RANGE("?:,"),
+								STRING("->")
+							)
+						)
+					),
+					CHAR('>')
+				)
+			)
+		)
+	);
+	
 	DEFINE("Operator",
 		KEYWORD("\
 			++ -- ~ \
 			%= &= |= ^= += -= *= /= <<= >>= >>>= \
 			== != <= >= && || << -> ... \
 			! < > ; : , . % & | ^ + * / - = \
-			? @ [ ] { } ( ) \
+			? @ [ ] ( ) \
 		")
 	);
 	
@@ -232,26 +258,145 @@ charcoal.syntax["haxe"] = function()
 		)
 	);
 	
+	DEFINE_VOID("Block",
+		GLUE(
+			CHAR('{'),
+			REPEAT(0, 1,
+				REF("HaxeSource")
+			),
+			CHAR('}')
+		)
+	);
+	
+	DEFINE_VOID("Whitespace",
+		RANGE(" \t\n\r")
+	);
+	
+	DEFINE("Function",
+		GLUE(
+			PREVIOUS("Keyword", "function"),
+			REF("Identifier"),
+			REPEAT(INLINE("Whitespace")),
+			CHAR('('),
+			REPEAT(
+				GLUE(
+					NOT(CHAR(')')),
+					CHOICE(
+						REPEAT(1, INLINE("Whitespace")),
+						REF("Keyword"),
+						REF("Identifier"),
+						REF("Macro"),
+						RANGE("?:,<->")
+					)
+				)
+			),
+			CHAR(')'),
+			REPEAT(
+				CHOICE(
+					REPEAT(1, INLINE("Whitespace")),
+					REF("Keyword"),
+					REF("Identifier"),
+					REF("Macro"),
+					RANGE("?:,<->")
+				)
+			),
+			CHOICE(
+				INLINE("Block"),
+				CHAR(';')
+			)
+		)
+	);
+	
+	DEFINE("Variable",
+		GLUE(
+			PREVIOUS("Keyword", "var"),
+			REF("Identifier")
+		)
+	);
+	
+	DEFINE("Class",
+		GLUE(
+			PREVIOUS("Keyword", "class"),
+			REF("Identifier"),
+			REPEAT(
+				CHOICE(
+					REPEAT(1, INLINE("Whitespace")),
+					REF("Keyword"),
+					REF("TypeIdentifier"),
+					REF("Macro")
+				)
+			),
+			REPEAT(INLINE("Whitespace")),
+			INLINE("Block")
+		)
+	);
+	
+	DEFINE("Enum",
+		GLUE(
+			PREVIOUS("Keyword", "enum"),
+			REF("Identifier"),
+			REPEAT(INLINE("Whitespace")),
+			INLINE("Block")
+		)
+	);
+	
 	DEFINE("HaxeSource",
 		REPEAT(
-			FIND(
-				CHOICE(
-					REPEAT(1, RANGE(" \t\r")),
-					REF("Comment"),
-					REF("String"),
-					REF("RegExp"),
-					REF("Macro"),
-					REF("Keyword"),
-					REF("Class"),
-					REF("Identifier"),
-					REF("Operator"),
-					REF("Float"),
-					REF("Integer"),
-					REF("Boolean")
+			GLUE(
+				NOT(CHAR('}')),
+				FIND(
+					CHOICE(
+						REPEAT(1, INLINE("Whitespace")),
+						REF("Comment"),
+						REF("String"),
+						REF("RegExp"),
+						REF("Macro"),
+						GLUE(
+							REF("Keyword"),
+							REPEAT(0, 1,
+								GLUE(
+									REPEAT(1, INLINE("Whitespace")),
+									CHOICE(
+										REF("Function"),
+										REF("Variable"),
+										REF("Class"),
+										REF("Enum")
+									)
+								)
+							)
+						),
+						REF("TypeIdentifier"),
+						REF("Identifier"),
+						REF("Operator"),
+						REF("Float"),
+						REF("Integer"),
+						REF("Boolean"),
+						INLINE("Block")
+					)
 				)
 			)
 		)
 	);
 	
-	ENTRY("HaxeSource");
+	DEFINE("Package",
+		GLUE(
+			REPEAT(INLINE("Whitespace")),
+			REPEAT(0, 1, REF("Comment")),
+			REPEAT(INLINE("Whitespace")),
+			REPEAT(0, 1,
+				FIND(
+					GLUE(
+						AHEAD(STRING("package")),
+						REF("Keyword"),
+						REPEAT(1, INLINE("Whitespace")),
+						REF("TypeIdentifier")
+					)
+				)
+			)
+			,
+			REF("HaxeSource")
+		)
+	);
+	
+	ENTRY("Package");
 }

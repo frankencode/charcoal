@@ -79,7 +79,11 @@ charcoal.themes["Default"] =
 			"AnyEscapedChar": magenta,
 			"Macro": darkGreen,
 			"Keyword": { color: black, bold: true },
-			"Class": darkBlue,
+			/*"Class": darkBlue,
+			"Function": red,
+			"Variable": yellow,
+			"Class": cyan,
+			"Enum": magenta,*/
 			// "Identifier": black,
 			// "Operator": black,
 			"Float": magenta,
