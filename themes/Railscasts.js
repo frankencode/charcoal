@@ -116,6 +116,16 @@ charcoal.themes["Railscasts"] =
 			"Punctuator" : RCPunctuator,
 			"DivPunctuator" : RCPunctuator
 		},
+		"as3": {
+			"Comment": RCComment,
+			"ReservedWord": RCJavascriptKeyword,
+			"DecimalLiteral": RCNumber,
+			"HexIntegerLiteral": RCNumber,
+			"StringLiteral": RCStringLiteral,
+			"EscapeSequence": RCEscape,
+			"BackslashSequence": RCEscape,
+			"RegularExpressionLiteral": RCRegularExpression
+		},
 		"haxe": {
 			"Comment": RCComment,
 			"String": RCStringLiteral,
@@ -129,6 +139,12 @@ charcoal.themes["Railscasts"] =
 			"Operator": RCOperator,
 			"Float": RCFloat,
 			"Integer": RCInteger
+		},
+		"tex": {
+			"Comment": RCComment,
+			"Command": RCEscape,
+			"Number": RCNumber,
+			"Argument": RCVariable
 		},
 		"css": {
 			"Comment": RCComment,
