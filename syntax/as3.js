@@ -75,7 +75,7 @@ charcoal.syntax["as3"] = function()
 				while with dynamic final internal native override private \
 				protected public static class const extends function \
 				get implements interface namespace package set var \
-				import include use null this \
+				import include use null this new \
 				"
 			),
 			NOT(INLINE("Identifier"))
