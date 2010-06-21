@@ -61,7 +61,7 @@ RCCssPseudoClass = '#E6E1DC';
 RCCssProperty = '#E6E1DC';
 RCCssValue = '#E6E1DC';
 RCCssUnit = '#A5C261';
-RCAtRule = '#E6E1DC';
+RCAtRule = '#CC7833';
 
 
 charcoal.themes["Railscasts"] =
@@ -180,7 +180,7 @@ charcoal.themes["Railscasts"] =
 			"FeatureClause": RCStringLiteral,
 			"ScenarioKey": RCKeyword,
 			"ScenarioTitle": RCStringLiteral,
-			"ScenarioClause": RCInvalid,
+			"ScenarioClause": '#E6E1DC',
 			"Citation": RCStringLiteral,
 			"Tag": RCAtRule,
 			"Comment": RCComment

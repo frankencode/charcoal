@@ -61,7 +61,7 @@ RLCssPseudoClass = '#000000';
 RLCssProperty = '#000000';
 RLCssValue = '#000000';
 RLCssUnit = '#0900D3';
-RLAtRule = '#000000';
+RLAtRule = '#006A08';
 
 
 charcoal.themes["Ryan Light"] =
@@ -180,7 +180,7 @@ charcoal.themes["Ryan Light"] =
 			"FeatureClause": RLStringLiteral,
 			"ScenarioKey": RLKeyword,
 			"ScenarioTitle": RLStringLiteral,
-			"ScenarioClause": RLInvalid,
+			"ScenarioClause": '#000000',
 			"Citation": RLStringLiteral,
 			"Tag": RLAtRule,
 			"Comment": RLComment

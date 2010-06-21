@@ -62,7 +62,7 @@ GHCssPseudoClass = '#000000';
 GHCssProperty = '#000000';
 GHCssValue = '#000000';
 GHCssUnit = '#009999';
-GHAtRule = '#000000';
+GHAtRule = {color: '#000000', bold: true};
 
 
 charcoal.themes["GitHub"] =
@@ -181,7 +181,7 @@ charcoal.themes["GitHub"] =
 			"FeatureClause": GHStringLiteral,
 			"ScenarioKey": GHKeyword,
 			"ScenarioTitle": GHStringLiteral,
-			"ScenarioClause": GHInvalid,
+			"ScenarioClause": '#000000',
 			"Citation": GHStringLiteral,
 			"Tag": GHAtRule,
 			"Comment": GHComment

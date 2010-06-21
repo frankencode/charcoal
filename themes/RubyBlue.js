@@ -61,7 +61,7 @@ RBCssPseudoClass = '#FFFFFF';
 RBCssProperty = '#FFFFFF';
 RBCssValue = '#FFFFFF';
 RBCssUnit = '#EDDD3D';
-RBAtRule = '#FFFFFF';
+RBAtRule = '#F8BB00';
 
 
 charcoal.themes["Ruby Blue"] =
@@ -180,7 +180,7 @@ charcoal.themes["Ruby Blue"] =
 			"FeatureClause": RBStringLiteral,
 			"ScenarioKey": RBKeyword,
 			"ScenarioTitle": RBStringLiteral,
-			"ScenarioClause": RBInvalid,
+			"ScenarioClause": '#FFFFFF',
 			"Citation": RBStringLiteral,
 			"Tag": RBAtRule,
 			"Comment": RBComment
