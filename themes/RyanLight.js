@@ -12,6 +12,7 @@ RLEditorSelection = '#C3DCFF';
 RLEditorMatch = '#FF6';
 RLEditorBracketMatch = RLEditorMatch;
 RLEditorCurrentLine = '#EFEFEF';
+RLInvalid = '#000000';
 RLComment = '#808080';
 RLBlockComment = '#808080';
 RLHtmlComment = '#808080';
@@ -60,7 +61,7 @@ RLCssPseudoClass = '#000000';
 RLCssProperty = '#000000';
 RLCssValue = '#000000';
 RLCssUnit = '#0900D3';
-RLCssRule = '#000000';
+RLAtRule = '#000000';
 
 
 charcoal.themes["Ryan Light"] =
@@ -156,7 +157,7 @@ charcoal.themes["Ryan Light"] =
 			"Class": RLCssClass,
 			"PseudoClass": RLCssPseudoClass,
 			"Id": RLCssId,
-			"Rule": RLCssRule
+			"Rule": RLAtRule
 		},
 		"xml": {
 			"Comment": RLHtmlComment,
@@ -171,6 +172,18 @@ charcoal.themes["Ryan Light"] =
 			"ErbComment": RLComment,
 			"ErbStart": RLErbTag,
 			"ErbEnd": RLErbTag
+		},
+		"cucumber": {
+			"Entity": RLKeyword,
+			"FeatureKey": RLKeyword,
+			"FeatureTitle": RLStringLiteral,
+			"FeatureClause": RLStringLiteral,
+			"ScenarioKey": RLKeyword,
+			"ScenarioTitle": RLStringLiteral,
+			"ScenarioClause": RLInvalid,
+			"Citation": RLStringLiteral,
+			"Tag": RLAtRule,
+			"Comment": RLComment
 		},
 		"cxx": {
 			"BlockComment": RLBlockComment,

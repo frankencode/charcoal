@@ -13,6 +13,7 @@ GHEditorSelection = '#FFFFAA';
 GHEditorMatch = '#FF6';
 GHEditorBracketMatch = GHEditorMatch;
 GHEditorCurrentLine = '#FFFEEB';
+GHInvalid = '#000000';
 GHComment = '#999988';
 GHBlockComment = '#999988';
 GHHtmlComment = '#999988';
@@ -61,7 +62,7 @@ GHCssPseudoClass = '#000000';
 GHCssProperty = '#000000';
 GHCssValue = '#000000';
 GHCssUnit = '#009999';
-GHCssRule = '#000000';
+GHAtRule = '#000000';
 
 
 charcoal.themes["GitHub"] =
@@ -143,7 +144,7 @@ charcoal.themes["GitHub"] =
 		},
 		"tex": {
 			"Comment": GHComment,
-			"Command": GHCommand,
+			"Command": GHEscape,
 			"Number": GHNumber,
 			"Argument": GHVariable
 		},
@@ -157,7 +158,7 @@ charcoal.themes["GitHub"] =
 			"Class": GHCssClass,
 			"PseudoClass": GHCssPseudoClass,
 			"Id": GHCssId,
-			"Rule": GHCssRule
+			"Rule": GHAtRule
 		},
 		"xml": {
 			"Comment": GHHtmlComment,
@@ -172,6 +173,18 @@ charcoal.themes["GitHub"] =
 			"ErbComment": GHComment,
 			"ErbStart": GHErbTag,
 			"ErbEnd": GHErbTag
+		},
+		"cucumber": {
+			"Entity": GHKeyword,
+			"FeatureKey": GHKeyword,
+			"FeatureTitle": GHStringLiteral,
+			"FeatureClause": GHStringLiteral,
+			"ScenarioKey": GHKeyword,
+			"ScenarioTitle": GHStringLiteral,
+			"ScenarioClause": GHInvalid,
+			"Citation": GHStringLiteral,
+			"Tag": GHAtRule,
+			"Comment": GHComment
 		},
 		"cxx": {
 			"BlockComment": GHBlockComment,

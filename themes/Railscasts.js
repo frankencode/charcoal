@@ -12,6 +12,7 @@ RCEditorSelection = '#555d74';
 RCEditorMatch = '#787878';
 RCEditorBracketMatch = RCEditorMatch;
 RCEditorCurrentLine = '#333435';
+RCInvalid = '#E6E1DC';
 RCComment = '#BC9458';
 RCBlockComment = '#BC9458';
 RCHtmlComment = '#BC9458';
@@ -60,7 +61,7 @@ RCCssPseudoClass = '#E6E1DC';
 RCCssProperty = '#E6E1DC';
 RCCssValue = '#E6E1DC';
 RCCssUnit = '#A5C261';
-RCCssRule = '#E6E1DC';
+RCAtRule = '#E6E1DC';
 
 
 charcoal.themes["Railscasts"] =
@@ -156,7 +157,7 @@ charcoal.themes["Railscasts"] =
 			"Class": RCCssClass,
 			"PseudoClass": RCCssPseudoClass,
 			"Id": RCCssId,
-			"Rule": RCCssRule
+			"Rule": RCAtRule
 		},
 		"xml": {
 			"Comment": RCHtmlComment,
@@ -171,6 +172,18 @@ charcoal.themes["Railscasts"] =
 			"ErbComment": RCComment,
 			"ErbStart": RCErbTag,
 			"ErbEnd": RCErbTag
+		},
+		"cucumber": {
+			"Entity": RCKeyword,
+			"FeatureKey": RCKeyword,
+			"FeatureTitle": RCStringLiteral,
+			"FeatureClause": RCStringLiteral,
+			"ScenarioKey": RCKeyword,
+			"ScenarioTitle": RCStringLiteral,
+			"ScenarioClause": RCInvalid,
+			"Citation": RCStringLiteral,
+			"Tag": RCAtRule,
+			"Comment": RCComment
 		},
 		"cxx": {
 			"BlockComment": RCBlockComment,

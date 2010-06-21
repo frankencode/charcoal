@@ -12,6 +12,7 @@ RBEditorSelection = '#38566F';
 RBEditorMatch = '#787878';
 RBEditorBracketMatch = RBEditorMatch;
 RBEditorCurrentLine = '#253E5A';
+RBInvalid = '#FFFFFF';
 RBComment = '#428BDD';
 RBBlockComment = '#438AD7';
 RBHtmlComment = '#428BDD';
@@ -60,7 +61,7 @@ RBCssPseudoClass = '#FFFFFF';
 RBCssProperty = '#FFFFFF';
 RBCssValue = '#FFFFFF';
 RBCssUnit = '#EDDD3D';
-RBCssRule = '#FFFFFF';
+RBAtRule = '#FFFFFF';
 
 
 charcoal.themes["Ruby Blue"] =
@@ -156,7 +157,7 @@ charcoal.themes["Ruby Blue"] =
 			"Class": RBCssClass,
 			"PseudoClass": RBCssPseudoClass,
 			"Id": RBCssId,
-			"Rule": RBCssRule
+			"Rule": RBAtRule
 		},
 		"xml": {
 			"Comment": RBHtmlComment,
@@ -171,6 +172,18 @@ charcoal.themes["Ruby Blue"] =
 			"ErbComment": RBComment,
 			"ErbStart": RBErbTag,
 			"ErbEnd": RBErbTag
+		},
+		"cucumber": {
+			"Entity": RBKeyword,
+			"FeatureKey": RBKeyword,
+			"FeatureTitle": RBStringLiteral,
+			"FeatureClause": RBStringLiteral,
+			"ScenarioKey": RBKeyword,
+			"ScenarioTitle": RBStringLiteral,
+			"ScenarioClause": RBInvalid,
+			"Citation": RBStringLiteral,
+			"Tag": RBAtRule,
+			"Comment": RBComment
 		},
 		"cxx": {
 			"BlockComment": RBBlockComment,

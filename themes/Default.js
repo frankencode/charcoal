@@ -121,6 +121,18 @@ charcoal.themes["Default"] =
 			"ErbStart": { color: darkMagenta, bold: true },
 			"ErbEnd": { color: darkMagenta, bold: true }
 		},
+		"cucumber": {
+			"Entity": { color: blue, bold: true },
+			"FeatureKey": { color: blue, bold: true },
+			"FeatureTitle": darkCyan,
+			"FeatureClause": darkCyan,
+			"ScenarioKey": { color: blue, bold: true },
+			"ScenarioTitle": darkCyan,
+			"ScenarioClause": black,
+			"Citation": darkCyan,
+			"Tag": darkMagenta,
+			"Comment": darkGray
+		},
 		"cxx": {
 			"BlockComment": darkGray,
 			"LineComment": darkGray,
