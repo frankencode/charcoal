@@ -248,108 +248,117 @@ charcoal.syntax["ruby"] = function()
 	);
 	
 	DEFINE("String",
-		GLUE(
-			CHOICE(
-				GLUE(
-					CHAR('%'),
-					NOT(
+		CHOICE(
+			GLUE(
+				CHAR('?'),
+				CHOICE(
+					REF("EscapeSequence"),
+					EXCEPT(" \t\n")
+				)
+			),
+			GLUE(
+				CHOICE(
+					GLUE(
+						CHAR('%'),
+						NOT(
+							CHOICE(
+								PREVIOUS("Integer"),
+								PREVIOUS("Float"),
+								PREVIOUS("String"),
+								PREVIOUS("ClosingBracket"),
+								PREVIOUS("DeclarationKeyword"),
+								PREVIOUS("Builtin")
+							)
+						),
 						CHOICE(
-							PREVIOUS("Integer"),
-							PREVIOUS("Float"),
-							PREVIOUS("String"),
-							PREVIOUS("ClosingBracket"),
-							PREVIOUS("DeclarationKeyword"),
-							PREVIOUS("Builtin")
-						)
-					),
-					CHOICE(
-						GLUE(
-							RANGE("qw"),
-							SET("doubleQuote", false),
-							SET("regex", false)
-						),
-						GLUE(
-							RANGE("Qx"),
-							SET("doubleQuote", true),
-							SET("regex", false)
-						),
-						GLUE(
-							RANGE("r"),
-							SET("doubleQuote", true),
-							SET("regex", true)
-						),
-						GLUE(
-							SET("doubleQuote", true),
-							SET("regex", false)
-						)
-					),
-					CHOICE(
-						GLUE(
-							AHEAD(
-								CHOICE(
-									RANGE("'\"!$%&/\\?`#+-*;:|~^@"),
-									GLUE(
-										NOT(PREVIOUS("LocalName")),
-										CHAR('=')
-									)
-								)
+							GLUE(
+								RANGE("qw"),
+								SET("doubleQuote", false),
+								SET("regex", false)
 							),
-							GETCHAR("quotationMark")
+							GLUE(
+								RANGE("Qx"),
+								SET("doubleQuote", true),
+								SET("regex", false)
+							),
+							GLUE(
+								RANGE("r"),
+								SET("doubleQuote", true),
+								SET("regex", true)
+							),
+							GLUE(
+								SET("doubleQuote", true),
+								SET("regex", false)
+							)
 						),
-						GLUE(CHAR('['), SETCHAR("quotationMark", ']')),
-						GLUE(CHAR('('), SETCHAR("quotationMark", ')')),
-						GLUE(CHAR('{'), SETCHAR("quotationMark", '}')),
-						GLUE(CHAR('<'), SETCHAR("quotationMark", '>'))
+						CHOICE(
+							GLUE(
+								AHEAD(
+									CHOICE(
+										RANGE("'\"!$%&/\\?`#+-*;:|~^@"),
+										GLUE(
+											NOT(PREVIOUS("LocalName")),
+											CHAR('=')
+										)
+									)
+								),
+								GETCHAR("quotationMark")
+							),
+							GLUE(CHAR('['), SETCHAR("quotationMark", ']')),
+							GLUE(CHAR('('), SETCHAR("quotationMark", ')')),
+							GLUE(CHAR('{'), SETCHAR("quotationMark", '}')),
+							GLUE(CHAR('<'), SETCHAR("quotationMark", '>'))
+						)
+					),
+					GLUE(
+						AHEAD(RANGE("\"`")),
+						SET("doubleQuote", true),
+						SET("regex", false),
+						GETCHAR("quotationMark")
+					),
+					GLUE(
+						CHAR('\''),
+						SET("doubleQuote", false),
+						SET("regex", false),
+						SETCHAR("quotationMark", '\'')
+					),
+					GLUE(
+						NOT(
+							CHOICE(
+								PREVIOUS("Integer"),
+								PREVIOUS("Float"),
+								PREVIOUS("String"),
+								PREVIOUS("LocalName"),
+								PREVIOUS("ClosingBracket"),
+								PREVIOUS("DeclarationKeyword"),
+								PREVIOUS("Builtin")
+							)
+						),
+						CHAR('/'),
+						SET("doubleQuote", true),
+						SET("regex", true),
+						SETCHAR("quotationMark", '/')
 					)
 				),
-				GLUE(
-					AHEAD(RANGE("\"`")),
-					SET("doubleQuote", true),
-					SET("regex", false),
-					GETCHAR("quotationMark")
+				REPEAT(
+					CHOICE(
+						IF("doubleQuote",
+							REF("Interpolation"),
+							FAIL()
+						),
+						REF("EscapeSequence"),
+						VAROTHER("quotationMark")
+					)
 				),
-				GLUE(
-					CHAR('\''),
-					SET("doubleQuote", false),
-					SET("regex", false),
-					SETCHAR("quotationMark", '\'')
+				VARCHAR("quotationMark"),
+				IF("regex",
+					REPEAT(RANGE("emxuiosn")),
+					PASS()
 				),
-				GLUE(
-					NOT(
-						CHOICE(
-							PREVIOUS("Integer"),
-							PREVIOUS("Float"),
-							PREVIOUS("String"),
-							PREVIOUS("LocalName"),
-							PREVIOUS("ClosingBracket"),
-							PREVIOUS("DeclarationKeyword"),
-							PREVIOUS("Builtin")
-						)
-					),
-					CHAR('/'),
-					SET("doubleQuote", true),
-					SET("regex", true),
-					SETCHAR("quotationMark", '/')
-				)
-			),
-			REPEAT(
-				CHOICE(
-					IF("doubleQuote",
-						REF("Interpolation"),
-						FAIL()
-					),
-					REF("EscapeSequence"),
-					VAROTHER("quotationMark")
-				)
-			),
-			VARCHAR("quotationMark"),
-			IF("regex",
-				REPEAT(RANGE("emxuiosn")),
-				PASS()
-			),
-			SET("doubleQuote", false),
-			SET("regex", false),
-			SETCHAR("quotationMark", '\0')
+				SET("doubleQuote", false),
+				SET("regex", false),
+				SETCHAR("quotationMark", '\0')
+			)
 		)
 	);
 	
@@ -506,7 +515,7 @@ charcoal.syntax["ruby"] = function()
 	DEFINE("Block",
 		GLUE(
 			CHAR('{'),
-			INVOKE("ruby"),
+			REF("RubySource"),
 			CHAR('}')
 		)
 	);
