@@ -314,9 +314,15 @@ charcoal.syntax["haxe"] = function()
 	);
 	
 	DEFINE("Variable",
-		GLUE(
-			PREVIOUS("Keyword", "var"),
-			REF("VariableIdentifier")
+		CHOICE(
+			GLUE(
+				PREVIOUS("Keyword", "var"),
+				REF("VariableIdentifier")
+			),
+			GLUE(
+				PREVIOUS("Variable"),
+				REF("VariableIdentifier")
+			)
 		)
 	);
 	
@@ -364,7 +370,18 @@ charcoal.syntax["haxe"] = function()
 									REPEAT(1, INLINE("Whitespace")),
 									CHOICE(
 										REF("Function"),
-										REF("Variable"),
+										GLUE(
+											REF("Variable"),
+											REPEAT(
+												GLUE(
+													REPEAT(INLINE("Whitespace")),
+													CHAR(','),
+													// REF("Operator"),
+													REPEAT(INLINE("Whitespace")),
+													REF("Variable")
+												)
+											)
+										),
 										REF("Class"),
 										REF("Enum")
 									)

@@ -515,7 +515,7 @@ charcoal.syntax["ruby"] = function()
 	DEFINE("Block",
 		GLUE(
 			CHAR('{'),
-			REF("RubySource"),
+			INVOKE("ruby"),
 			CHAR('}')
 		)
 	);

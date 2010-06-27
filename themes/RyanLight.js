@@ -97,7 +97,6 @@ charcoal.themes["Ryan Light"] =
 			"Comment": RLComment,
 			"String": RLStringLiteral,
 			"Keyword": RLKeyword,
-			"Identifier": RLKeyword,
 			"Operator": RLOperator,
 			"Float": RLFloat,
 			"Integer": RLInteger
@@ -107,7 +106,6 @@ charcoal.themes["Ryan Light"] =
 			"Keyword": RLJavascriptKeyword,
 			"ReservedWord": RLJavascriptKeyword,
 			"FutureReservedWord": RLJavascriptKeyword,
-			"Identifier": RLOperator,
 			"DecimalLiteral": RLNumber,
 			"HexIntegerLiteral": RLNumber,
 			"StringLiteral": RLStringLiteral,
@@ -135,8 +133,10 @@ charcoal.themes["Ryan Light"] =
 			"AnyEscapedChar": RLEscape,
 			"Macro": RLPreprocessing,
 			"Keyword": RLKeyword,
-			"Class": RLRubyClassName,
-			"Identifier": RLVariable,
+			"PackageIdentifier": RLRubyClassName,
+			"ClassIdentifier": RLRubyClassName,
+			"FunctionIdentifier": RLRubyVariable,
+			"VariableIdentifier": RLRubyInstanceVariable,
 			"Operator": RLOperator,
 			"Float": RLFloat,
 			"Integer": RLInteger

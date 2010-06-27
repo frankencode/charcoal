@@ -97,7 +97,6 @@ charcoal.themes["Railscasts"] =
 			"Comment": RCComment,
 			"String": RCStringLiteral,
 			"Keyword": RCKeyword,
-			"Identifier": RCKeyword,
 			"Operator": RCOperator,
 			"Float": RCFloat,
 			"Integer": RCInteger
@@ -107,7 +106,6 @@ charcoal.themes["Railscasts"] =
 			"Keyword": RCJavascriptKeyword,
 			"ReservedWord": RCJavascriptKeyword,
 			"FutureReservedWord": RCJavascriptKeyword,
-			"Identifier": RCOperator,
 			"DecimalLiteral": RCNumber,
 			"HexIntegerLiteral": RCNumber,
 			"StringLiteral": RCStringLiteral,
@@ -135,8 +133,10 @@ charcoal.themes["Railscasts"] =
 			"AnyEscapedChar": RCEscape,
 			"Macro": RCPreprocessing,
 			"Keyword": RCKeyword,
-			"Class": RCRubyClassName,
-			"Identifier": RCVariable,
+			"PackageIdentifier": RCRubyClassName,
+			"ClassIdentifier": RCRubyClassName,
+			"FunctionIdentifier": RCRubyVariable,
+			"VariableIdentifier": RCRubyInstanceVariable,
 			"Operator": RCOperator,
 			"Float": RCFloat,
 			"Integer": RCInteger

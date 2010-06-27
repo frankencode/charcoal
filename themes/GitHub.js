@@ -98,7 +98,6 @@ charcoal.themes["GitHub"] =
 			"Comment": GHComment,
 			"String": GHStringLiteral,
 			"Keyword": GHKeyword,
-			"Identifier": GHKeyword,
 			"Operator": GHOperator,
 			"Float": GHFloat,
 			"Integer": GHInteger
@@ -108,7 +107,6 @@ charcoal.themes["GitHub"] =
 			"Keyword": GHJavascriptKeyword,
 			"ReservedWord": GHJavascriptKeyword,
 			"FutureReservedWord": GHJavascriptKeyword,
-			"Identifier": GHOperator,
 			"DecimalLiteral": GHNumber,
 			"HexIntegerLiteral": GHNumber,
 			"StringLiteral": GHStringLiteral,
@@ -136,8 +134,10 @@ charcoal.themes["GitHub"] =
 			"AnyEscapedChar": GHEscape,
 			"Macro": GHPreprocessing,
 			"Keyword": GHKeyword,
-			"Class": GHRubyClassName,
-			"Identifier": GHVariable,
+			"PackageIdentifier": GHRubyClassName,
+			"ClassIdentifier": GHRubyClassName,
+			"FunctionIdentifier": GHRubyVariable,
+			"VariableIdentifier": GHRubyInstanceVariable,
 			"Operator": GHOperator,
 			"Float": GHFloat,
 			"Integer": GHInteger

@@ -97,7 +97,6 @@ charcoal.themes["Ruby Blue"] =
 			"Comment": RBComment,
 			"String": RBStringLiteral,
 			"Keyword": RBKeyword,
-			"Identifier": RBKeyword,
 			"Operator": RBOperator,
 			"Float": RBFloat,
 			"Integer": RBInteger
@@ -107,7 +106,6 @@ charcoal.themes["Ruby Blue"] =
 			"Keyword": RBJavascriptKeyword,
 			"ReservedWord": RBJavascriptKeyword,
 			"FutureReservedWord": RBJavascriptKeyword,
-			"Identifier": RBOperator,
 			"DecimalLiteral": RBNumber,
 			"HexIntegerLiteral": RBNumber,
 			"StringLiteral": RBStringLiteral,
@@ -135,8 +133,10 @@ charcoal.themes["Ruby Blue"] =
 			"AnyEscapedChar": RBEscape,
 			"Macro": RBPreprocessing,
 			"Keyword": RBKeyword,
-			"Class": RBRubyClassName,
-			"Identifier": RBVariable,
+			"PackageIdentifier": RBRubyClassName,
+			"ClassIdentifier": RBRubyClassName,
+			"FunctionIdentifier": RBRubyVariable,
+			"VariableIdentifier": RBRubyInstanceVariable,
 			"Operator": RBOperator,
 			"Float": RBFloat,
 			"Integer": RBInteger
