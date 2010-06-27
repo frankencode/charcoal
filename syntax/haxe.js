@@ -272,10 +272,16 @@ charcoal.syntax["haxe"] = function()
 		RANGE(" \t\n\r")
 	);
 	
+	DEFINE("FunctionIdentifier", INLINE("Identifier"));
+	DEFINE("VariableIdentifier", INLINE("Identifier"));
+	DEFINE("ClassIdentifier",    INLINE("Identifier"));
+	DEFINE("EnumIdentifier",     INLINE("Identifier"));
+	DEFINE("PackageIdentifier",  INLINE("TypeIdentifier"));
+	
 	DEFINE("Function",
 		GLUE(
 			PREVIOUS("Keyword", "function"),
-			REF("Identifier"),
+			REF("FunctionIdentifier"),
 			REPEAT(INLINE("Whitespace")),
 			CHAR('('),
 			REPEAT(
@@ -310,14 +316,14 @@ charcoal.syntax["haxe"] = function()
 	DEFINE("Variable",
 		GLUE(
 			PREVIOUS("Keyword", "var"),
-			REF("Identifier")
+			REF("VariableIdentifier")
 		)
 	);
 	
 	DEFINE("Class",
 		GLUE(
 			PREVIOUS("Keyword", "class"),
-			REF("Identifier"),
+			REF("ClassIdentifier"),
 			REPEAT(
 				CHOICE(
 					REPEAT(1, INLINE("Whitespace")),
@@ -334,7 +340,7 @@ charcoal.syntax["haxe"] = function()
 	DEFINE("Enum",
 		GLUE(
 			PREVIOUS("Keyword", "enum"),
-			REF("Identifier"),
+			REF("EnumIdentifier"),
 			REPEAT(INLINE("Whitespace")),
 			INLINE("Block")
 		)
@@ -389,7 +395,7 @@ charcoal.syntax["haxe"] = function()
 						AHEAD(STRING("package")),
 						REF("Keyword"),
 						REPEAT(1, INLINE("Whitespace")),
-						REF("TypeIdentifier")
+						REF("PackageIdentifier")
 					)
 				)
 			)

@@ -11,23 +11,23 @@ charcoal.stacks["haxe"] =
 			},
 			"Function": {
 				category: "Function",
-				identifier: "Identifier"
+				identifier: "FunctionIdentifier"
 			},
 			"Variable": {
 				category: "Variable",
-				identifier: "Identifier"
+				identifier: "VariableIdentifier"
 			},
 			"Class": {
 				category: "Class",
-				identifier: "Identifier"
+				identifier: "ClassIdentifier"
 			},
 			"Enum": {
 				category: "Class",
-				identifier: "Identifier"
+				identifier: "EnumIdentifier"
 			},
 			"Package": {
 				category: "Module",
-				identifier: "TypeIdentifier"
+				identifier: "PackageIdentifier"
 			}
 		}
 	}
