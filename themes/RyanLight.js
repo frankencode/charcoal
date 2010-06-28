@@ -137,6 +137,8 @@ charcoal.themes["Ryan Light"] =
 			"ClassIdentifier": RLRubyClassName,
 			"FunctionIdentifier": RLRubyVariable,
 			"VariableIdentifier": RLRubyInstanceVariable,
+			"EnumIdentifier": RLRubyVariable,
+			"BuiltInIdentifier": RLBuiltinConstant,
 			"Operator": RLOperator,
 			"Float": RLFloat,
 			"Integer": RLInteger

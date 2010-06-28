@@ -83,6 +83,7 @@ charcoal.themes["Default"] =
 			"FunctionIdentifier": darkBlue,
 			"VariableIdentifier": darkBlue,
 			"EnumIdentifier": darkBlue,
+			"BuiltInIdentifier": darkRed,
 			"Float": magenta,
 			"Integer": blue
 		},

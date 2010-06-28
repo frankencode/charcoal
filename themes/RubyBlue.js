@@ -137,6 +137,8 @@ charcoal.themes["Ruby Blue"] =
 			"ClassIdentifier": RBRubyClassName,
 			"FunctionIdentifier": RBRubyVariable,
 			"VariableIdentifier": RBRubyInstanceVariable,
+			"EnumIdentifier": RBRubyVariable,
+			"BuiltInIdentifier": RBBuiltinConstant,
 			"Operator": RBOperator,
 			"Float": RBFloat,
 			"Integer": RBInteger

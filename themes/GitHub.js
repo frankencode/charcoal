@@ -138,6 +138,8 @@ charcoal.themes["GitHub"] =
 			"ClassIdentifier": GHRubyClassName,
 			"FunctionIdentifier": GHRubyVariable,
 			"VariableIdentifier": GHRubyInstanceVariable,
+			"EnumIdentifier": GHRubyVariable,
+			"BuiltInIdentifier": GHBuiltinConstant,
 			"Operator": GHOperator,
 			"Float": GHFloat,
 			"Integer": GHInteger

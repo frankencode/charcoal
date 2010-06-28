@@ -137,6 +137,8 @@ charcoal.themes["Railscasts"] =
 			"ClassIdentifier": RCRubyClassName,
 			"FunctionIdentifier": RCRubyVariable,
 			"VariableIdentifier": RCRubyInstanceVariable,
+			"EnumIdentifier": RCRubyVariable,
+			"BuiltInIdentifier": RCBuiltinConstant,
 			"Operator": RCOperator,
 			"Float": RCFloat,
 			"Integer": RCInteger

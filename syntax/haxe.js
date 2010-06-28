@@ -110,9 +110,28 @@ charcoal.syntax["haxe"] = function()
 		)
 	);
 	
+	DEFINE("BuiltInIdentifier",
+		GLUE(
+			KEYWORD(
+				"Void Float Int UInt Null Bool Dynamic    \
+				 Iterator Iterable ArrayAccess            \
+				 Array Class Date Enum EReg               \
+				 Hash IntHash IntIter Lambda List Match   \
+				 Reflect String \
+				 Type Xml"
+			),
+			NOT(
+				INLINE("SimpleIdentifier")
+			)
+		)
+	);
+	
 	DEFINE("Identifier",
 		GLUE(
-			INLINE("SimpleIdentifier"),
+			CHOICE(
+				REF("BuiltInIdentifier"),
+				INLINE("SimpleIdentifier")
+			),
 			REPEAT(
 				GLUE(
 					REPEAT(INLINE("Whitespace")),
