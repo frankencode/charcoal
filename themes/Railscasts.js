@@ -31,6 +31,7 @@ RCKeyword = '#CC7833';
 RCJavascriptKeyword = '#CC7833';
 RCObjcKeyword = '#FFC66D';
 RCPreprocessing = '#519F50';
+RCClassName = '#E6E1DC';
 RCRubyClassName = '#E6E1DC';
 RCConstantName = '#DA4939';
 RCBuiltinConstant = '#6E9CBE';
@@ -79,7 +80,6 @@ charcoal.themes["Railscasts"] =
 			"Keyword": RCKeyword,
 			"DeclarationKeyword": RCKeyword,
 			"Builtin": RCBuiltinConstant,
-			"LocalName": RCRubyVariable,
 			"MemberName": RCRubyInstanceVariable,
 			"ClassMemberName": RCRubyClassVariable,
 			"ClassName": RCRubyClassName,
@@ -133,11 +133,11 @@ charcoal.themes["Railscasts"] =
 			"AnyEscapedChar": RCEscape,
 			"Macro": RCPreprocessing,
 			"Keyword": RCKeyword,
-			"PackageIdentifier": RCRubyClassName,
-			"ClassIdentifier": RCRubyClassName,
-			"FunctionIdentifier": RCRubyVariable,
-			"VariableIdentifier": RCRubyInstanceVariable,
-			"EnumIdentifier": RCRubyVariable,
+			"PackageIdentifier": RCClassName,
+			"ClassIdentifier": RCClassName,
+			"FunctionIdentifier": RCVariable,
+			"VariableIdentifier": RCVariable,
+			"EnumIdentifier": RCVariable,
 			"BuiltInIdentifier": RCBuiltinConstant,
 			"Operator": RCOperator,
 			"Float": RCFloat,

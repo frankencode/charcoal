@@ -31,6 +31,7 @@ RBKeyword = '#F8BB00';
 RBJavascriptKeyword = '#F8BB00';
 RBObjcKeyword = '#F8BB00';
 RBPreprocessing = '#468434';
+RBClassName = '#FFFFFF';
 RBRubyClassName = '#FFFFFF';
 RBConstantName = '#8AA6C1';
 RBBuiltinConstant = '#8AA6C1';
@@ -79,7 +80,6 @@ charcoal.themes["Ruby Blue"] =
 			"Keyword": RBKeyword,
 			"DeclarationKeyword": RBKeyword,
 			"Builtin": RBBuiltinConstant,
-			"LocalName": RBRubyVariable,
 			"MemberName": RBRubyInstanceVariable,
 			"ClassMemberName": RBRubyClassVariable,
 			"ClassName": RBRubyClassName,
@@ -133,11 +133,11 @@ charcoal.themes["Ruby Blue"] =
 			"AnyEscapedChar": RBEscape,
 			"Macro": RBPreprocessing,
 			"Keyword": RBKeyword,
-			"PackageIdentifier": RBRubyClassName,
-			"ClassIdentifier": RBRubyClassName,
-			"FunctionIdentifier": RBRubyVariable,
-			"VariableIdentifier": RBRubyInstanceVariable,
-			"EnumIdentifier": RBRubyVariable,
+			"PackageIdentifier": RBClassName,
+			"ClassIdentifier": RBClassName,
+			"FunctionIdentifier": RBVariable,
+			"VariableIdentifier": RBVariable,
+			"EnumIdentifier": RBVariable,
 			"BuiltInIdentifier": RBBuiltinConstant,
 			"Operator": RBOperator,
 			"Float": RBFloat,

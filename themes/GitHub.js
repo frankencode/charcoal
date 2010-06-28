@@ -32,6 +32,7 @@ GHKeyword = {color: '#000000', bold: true};
 GHJavascriptKeyword = {color: '#000000', bold: true};
 GHObjcKeyword = {color: '#000000', bold: true};
 GHPreprocessing = '#DD1144';
+GHClassName = {color: '#445588', bold: true};
 GHRubyClassName = {color: '#445588', bold: true};
 GHConstantName = '#008080';
 GHBuiltinConstant = {color: '#000000', bold: true};
@@ -80,7 +81,6 @@ charcoal.themes["GitHub"] =
 			"Keyword": GHKeyword,
 			"DeclarationKeyword": GHKeyword,
 			"Builtin": GHBuiltinConstant,
-			"LocalName": GHRubyVariable,
 			"MemberName": GHRubyInstanceVariable,
 			"ClassMemberName": GHRubyClassVariable,
 			"ClassName": GHRubyClassName,
@@ -134,11 +134,11 @@ charcoal.themes["GitHub"] =
 			"AnyEscapedChar": GHEscape,
 			"Macro": GHPreprocessing,
 			"Keyword": GHKeyword,
-			"PackageIdentifier": GHRubyClassName,
-			"ClassIdentifier": GHRubyClassName,
-			"FunctionIdentifier": GHRubyVariable,
-			"VariableIdentifier": GHRubyInstanceVariable,
-			"EnumIdentifier": GHRubyVariable,
+			"PackageIdentifier": GHClassName,
+			"ClassIdentifier": GHClassName,
+			"FunctionIdentifier": GHVariable,
+			"VariableIdentifier": GHVariable,
+			"EnumIdentifier": GHVariable,
 			"BuiltInIdentifier": GHBuiltinConstant,
 			"Operator": GHOperator,
 			"Float": GHFloat,

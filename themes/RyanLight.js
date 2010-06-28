@@ -31,6 +31,7 @@ RLKeyword = '#006A08';
 RLJavascriptKeyword = '#006A08';
 RLObjcKeyword = '#820095';
 RLPreprocessing = '#26B31A';
+RLClassName = '#000000';
 RLRubyClassName = '#000000';
 RLConstantName = '#A62B29';
 RLBuiltinConstant = '#0000CD';
@@ -79,7 +80,6 @@ charcoal.themes["Ryan Light"] =
 			"Keyword": RLKeyword,
 			"DeclarationKeyword": RLKeyword,
 			"Builtin": RLBuiltinConstant,
-			"LocalName": RLRubyVariable,
 			"MemberName": RLRubyInstanceVariable,
 			"ClassMemberName": RLRubyClassVariable,
 			"ClassName": RLRubyClassName,
@@ -133,11 +133,11 @@ charcoal.themes["Ryan Light"] =
 			"AnyEscapedChar": RLEscape,
 			"Macro": RLPreprocessing,
 			"Keyword": RLKeyword,
-			"PackageIdentifier": RLRubyClassName,
-			"ClassIdentifier": RLRubyClassName,
-			"FunctionIdentifier": RLRubyVariable,
-			"VariableIdentifier": RLRubyInstanceVariable,
-			"EnumIdentifier": RLRubyVariable,
+			"PackageIdentifier": RLClassName,
+			"ClassIdentifier": RLClassName,
+			"FunctionIdentifier": RLVariable,
+			"VariableIdentifier": RLVariable,
+			"EnumIdentifier": RLVariable,
 			"BuiltInIdentifier": RLBuiltinConstant,
 			"Operator": RLOperator,
 			"Float": RLFloat,
