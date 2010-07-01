@@ -94,6 +94,7 @@ charcoal.syntax["haxe"] = function()
 	
 	DEFINE_VOID("SimpleIdentifier",
 		GLUE(
+			NOT(REF("Keyword")),
 			CHOICE(
 				RANGE('a', 'z'),
 				RANGE('A', 'Z'),
@@ -113,7 +114,8 @@ charcoal.syntax["haxe"] = function()
 	DEFINE("BuiltInIdentifier",
 		GLUE(
 			KEYWORD(
-				"Void Float Int UInt Null Bool Dynamic    \
+				"new \
+				 Void Float Int UInt Null Bool Dynamic    \
 				 Iterator Iterable ArrayAccess            \
 				 Array Class Date Enum EReg               \
 				 Hash IntHash IntIter Lambda List Match   \
@@ -161,8 +163,8 @@ charcoal.syntax["haxe"] = function()
 			%= &= |= ^= += -= *= /= <<= >>= >>>= \
 			== != <= >= && || << -> ... \
 			! < > ; : , . % & | ^ + * / - = \
-			? @ [ ] ( ) \
-		")
+			? @ [ ] \
+		")  // ( )
 	);
 	
 	DEFINE_VOID("HexDigit",
@@ -246,10 +248,7 @@ charcoal.syntax["haxe"] = function()
 			REPEAT(
 				CHOICE(
 					REF("EscapedChar"),
-					GLUE(
-						NOT(CHAR('\n')),
-						VAROTHER("quotation")
-					)
+					VAROTHER("quotation")
 				)
 			),
 			VARCHAR("quotation")
@@ -333,14 +332,39 @@ charcoal.syntax["haxe"] = function()
 	);
 	
 	DEFINE("Variable",
-		CHOICE(
-			GLUE(
-				PREVIOUS("Keyword", "var"),
-				REF("VariableIdentifier")
+		GLUE(
+			CHOICE(
+				GLUE(
+					PREVIOUS("Keyword", "var"),
+					REF("VariableIdentifier")
+				),
+				GLUE(
+					PREVIOUS("Variable"),
+					REF("VariableIdentifier")
+				)
 			),
-			GLUE(
-				PREVIOUS("Variable"),
-				REF("VariableIdentifier")
+			REPEAT(INLINE("Whitespace")),
+			REPEAT(0, 1,
+				GLUE(
+					CHAR(':'),
+					REPEAT(INLINE("Whitespace")),
+					REF("TypeIdentifier")
+				)
+			),
+			REPEAT(INLINE("Whitespace")),
+			REPEAT(0, 1,
+				GLUE(
+					AHEAD(CHAR('=')),
+					REPEAT(REF("Operator")),
+					REPEAT(INLINE("Whitespace")),
+					CHOICE(
+						REF("Float"),
+						REF("Integer"),
+						REF("Boolean"),
+						REF("String"),
+						REF("Identifier")
+					)
+				)
 			)
 		)
 	);
