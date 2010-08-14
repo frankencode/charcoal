@@ -197,7 +197,7 @@ charcoal.themes["Default"] =
 			"Real": darkMagenta,
 			"Keyword": { color: black, bold: true },
 			"Modifier": darkCyan, // special type declaration keywords
-			"AddressOfIdentifier": { color: darkRed }
+			"AddressOfIdentifier": darkMagenta
 			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
