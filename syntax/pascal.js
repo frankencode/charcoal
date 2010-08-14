@@ -117,28 +117,24 @@ charcoal.syntax["pascal"] = function()
 		)
 	);
 	
-	DEFINE("TurboPascalKeyword",
-		KEYWORD("\
-			absolute array asm begin case const constructor   \
-			destructor do downto else end file for function       \
-			goto if implementation inherited inline interface  \
-			label nil object of on operator packed         \
-			procedure program record reintroduce repeat self set  \
-			string then to type unit until uses var while \
-			with "
+	DEFINE("Keyword",
+		KEYWORD(
+			/* Turbo Pascal */ "\
+			absolute array asm begin case const constructor      \
+			destructor do downto else end file for function      \
+			goto if implementation inherited inline interface    \
+			label nil object of on operator packed               \
+			procedure program record reintroduce repeat self set \
+			string then to type unit until uses var while        \
+			with                                                 "
+			+ /* Free Pascal */ "\
+			dispose exit false new true"
+			+ /* Object Pascal */ "\
+			class private protected public                     \
+			dispinterface except exports finalization          \
+			finally initialization inline library on out       \
+			packed property raise resourcestring threadvar try "
 		)
-	);
-	
-	DEFINE("FreePascalKeyword",
-		KEYWORD("dispose exit false new true")
-	);
-	
-	DEFINE("ObjectPascalKeyword",
-		KEYWORD("\
-			class private protected public dispinterface except exports finalization \
-			finally initialization inline library on out    \
-			packed property raise resourcestring threadvar try \
-		")
 	);
 	
 	DEFINE("Operator",
@@ -150,15 +146,6 @@ charcoal.syntax["pascal"] = function()
 			>< include exclude in \
 			is as                 \
 		")
-	);
-	
-	DEFINE("Keyword",
-		CHOICE(
-			REF("TurboPascalKeyword"),
-			REF("FreePascalKeyword"),
-			REF("ObjectPascalKeyword")
-			// , REF("Modifier")
-		)
 	);
 	
 	DEFINE("Modifier",
@@ -211,7 +198,7 @@ charcoal.syntax["pascal"] = function()
 	
 	DEFINE("Done",
 		GLUE(
-			PREVIOUS("TurboPascalKeyword", "end"),
+			PREVIOUS("Keyword", "end"),
 			CHAR('.')
 		)
 	);
@@ -227,8 +214,8 @@ charcoal.syntax["pascal"] = function()
 						REF("Keyword"),
 						NOT(INLINE("Identifier"))
 					),
-					REF("AddressOfIdentifier"),
 					REF("Identifier"),
+					REF("AddressOfIdentifier"),
 					REF("Operator"),
 					REF("String"),
 					REF("Real"),
