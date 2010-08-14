@@ -189,7 +189,7 @@ charcoal.themes["Default"] =
 			"Number": blue
 		},
 		"pascal": {
-			"Preprocessing": darkCyan,
+			"Preprocessing": darkGreen,
 			"Comment": darkGray,
 			"String": darkGreen,
 			"ControlString": darkYellow, // aka: escape sequence
