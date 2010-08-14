@@ -156,8 +156,8 @@ charcoal.syntax["pascal"] = function()
 		CHOICE(
 			REF("TurboPascalKeyword"),
 			REF("FreePascalKeyword"),
-			REF("ObjectPascalKeyword"),
-			REF("Modifier")
+			REF("ObjectPascalKeyword")
+			// , REF("Modifier")
 		)
 	);
 	
