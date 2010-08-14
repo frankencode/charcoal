@@ -76,7 +76,7 @@ charcoal.themes["Default"] =
 			"RegExp": darkMagenta,
 			"EscapedChar": darkYellow,
 			"AnyEscapedChar": darkYellow,
-			"Macro": darkGreen,
+			"Macro": darkCyan,
 			"Keyword": { color: black, bold: true },
 			"PackageIdentifier": darkBlue,
 			"ClassIdentifier": darkBlue,
@@ -135,11 +135,11 @@ charcoal.themes["Default"] =
 			"BlockComment": darkGray,
 			"LineComment": darkGray,
 			"PreprocessingComment": darkGray,
-			"Preprocessing": darkGreen,
-			"EscapedChar": magenta,
-			"String": red,
-			"ObjcEscapedChar": magenta,
-			"ObjcString": red,
+			"Preprocessing": darkCyan,
+			"EscapedChar": darkYellow,
+			"String": darkGreen,
+			"ObjcEscapedChar": darkYellow,
+			"ObjcString": darkGreen,
 			"Keyword": { color: black, bold: true },
 			"TypeKeyword": darkRed,
 			"QtKeyword": { color: blue, bold: true },
@@ -187,9 +187,20 @@ charcoal.themes["Default"] =
 			"String": darkGreen,
 			"EscapeSequence": darkYellow,
 			"Number": blue
+		},
+		"pascal": {
+			"Preprocessing": darkCyan,
+			"Comment": darkGray,
+			"String": darkGreen,
+			"ControlString": darkYellow, // aka: escape sequence
+			"Integer": blue,
+			"Real": darkMagenta,
+			"Keyword": { color: black, bold: true },
+			"Modifier": darkCyan, // special type declaration keywords
+			"AddressOfIdentifier": { color: darkRed }
+			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
-	
 	editor: {
 		foreground: "#000",
 		background: "#FFF",
