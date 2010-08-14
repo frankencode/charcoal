@@ -197,7 +197,22 @@ charcoal.themes["Default"] =
 			"Real": darkMagenta,
 			"Keyword": { color: black, bold: true },
 			"Modifier": darkCyan, // special type declaration keywords
-			"AddressOfIdentifier": darkMagenta
+			"AddressOfIdentifier": darkMagenta // color like Expansion in bash
+			// "Identifier": ... // not to be highlighted, only exists for speed!
+		},
+		"octave": {
+			"Comment": darkGray,
+			"BuiltinAtomic": darkRed,
+			"Builtin": darkBlue,
+			"ReservedWord": { color: black, bold: true },
+			"Integer": blue,
+			"Float": darkMagenta,
+			"SingleQuotedString": darkGreen,
+			"DoubleQuotedString": darkGreen,
+			"EscapeSequence": darkYellow,
+			"EscapedSingleQuote": darkYellow,
+			"Continuation": darkYellow,
+			"FunctionHandle": darkMagenta // color like Expansion in bash
 			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
