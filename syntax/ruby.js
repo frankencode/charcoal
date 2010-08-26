@@ -1,8 +1,10 @@
 charcoal.syntax["ruby"] = function()
 {
 	STATE_FLAG("doubleQuote", false);
+	STATE_FLAG("bracketedString", false);
 	STATE_FLAG("regex", false);
 	STATE_CHAR("quotationMark", '\0');
+	STATE_CHAR("quotationMarkOpening", '\0');
 	STATE_STRING("endOfDocument", "");
 	
 	DEFINE_VOID("Whitespace",
@@ -247,6 +249,27 @@ charcoal.syntax["ruby"] = function()
 		)
 	);
 	
+	DEFINE_VOID("StringBody",
+		REPEAT(
+			CHOICE(
+				IF("doubleQuote",
+					REF("Interpolation"),
+					FAIL()
+				),
+				REF("EscapeSequence"),
+				IF("bracketedString",
+					GLUE(
+						VARCHAR("quotationMarkOpening"),
+						INLINE("StringBody"),
+						VARCHAR("quotationMark")
+					),
+					FAIL()
+				),
+				VAROTHER("quotationMark")
+			)
+		)
+	);
+	
 	DEFINE("String",
 		CHOICE(
 			GLUE(
@@ -304,10 +327,15 @@ charcoal.syntax["ruby"] = function()
 								),
 								GETCHAR("quotationMark")
 							),
-							GLUE(CHAR('['), SETCHAR("quotationMark", ']')),
-							GLUE(CHAR('('), SETCHAR("quotationMark", ')')),
-							GLUE(CHAR('{'), SETCHAR("quotationMark", '}')),
-							GLUE(CHAR('<'), SETCHAR("quotationMark", '>'))
+							GLUE(
+								CHOICE(
+									GLUE(CHAR('['), SETCHAR("quotationMarkOpening", '['), SETCHAR("quotationMark", ']')),
+									GLUE(CHAR('('), SETCHAR("quotationMarkOpening", '('), SETCHAR("quotationMark", ')')),
+									GLUE(CHAR('{'), SETCHAR("quotationMarkOpening", '{'), SETCHAR("quotationMark", '}')),
+									GLUE(CHAR('<'), SETCHAR("quotationMarkOpening", '<'), SETCHAR("quotationMark", '>'))
+								),
+								SET("bracketedString", true)
+							)
 						)
 					),
 					GLUE(
@@ -340,24 +368,17 @@ charcoal.syntax["ruby"] = function()
 						SETCHAR("quotationMark", '/')
 					)
 				),
-				REPEAT(
-					CHOICE(
-						IF("doubleQuote",
-							REF("Interpolation"),
-							FAIL()
-						),
-						REF("EscapeSequence"),
-						VAROTHER("quotationMark")
-					)
-				),
+				INLINE("StringBody"),
 				VARCHAR("quotationMark"),
 				IF("regex",
 					REPEAT(RANGE("emxuiosn")),
 					PASS()
 				),
 				SET("doubleQuote", false),
+				SET("bracketedString", false),
 				SET("regex", false),
-				SETCHAR("quotationMark", '\0')
+				SETCHAR("quotationMark", '\0'),
+				SETCHAR("quotationMarkOpening", '\0')
 			)
 		)
 	);
