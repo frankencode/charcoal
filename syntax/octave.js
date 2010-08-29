@@ -42,18 +42,15 @@ charcoal.syntax["octave"] = function()
 			who whos who_line_format exist \
 			options which what clear \
 			disp input yes_or_no kbhit \
-			default_save_options save_precision save_header_format_string native_float_format fdisp \
 			rats \
 			eval feval run \
 			ans isvarname genvarname namelengthmax \
 			isequal isequalwithequalnans \
-			nargin nargout inputname silent_function \
-			mfilename ignore_function_time_stamp source \
+			nargin nargout inputname  \
+			mfilename  source \
 			functions func2str str2func \
 			inline argnames formula vectorize \
-			mark_as_command unmark_command iscommand mark_as_rawcommand unmark_raw_command israwcommand \
-			debug_on_interrupt debug_on_warning debug_on_error keyboard \
-			error usage beep_on_error \
+			error usage \
 			isobject methods ismethod \
 			plus minus uplus uminus time mtimes rdivide mrdivide ldivide mldivide \
 			lt le gt ge eq ne \
@@ -64,6 +61,13 @@ charcoal.syntax["octave"] = function()
 			length floor true false min max abs find warning error \
 		")
 /* FIXME: this language lacks OO design,...
+			silent_function
+			beep_on_error
+			ignore_function_time_stamp
+			default_save_options save_precision save_header_format_string native_float_format fdisp \
+			mark_as_command unmark_command iscommand mark_as_rawcommand unmark_raw_command israwcommand \
+			debug_on_interrupt debug_on_warning debug_on_error keyboard \
+			
 			stdin stdout sterr fopen fclose fseek ftell ferror fgets fputs fread fwrite \
 			fgetl \
 			fscanf scanf sscanf \
