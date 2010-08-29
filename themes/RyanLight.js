@@ -56,11 +56,11 @@ RLTagAttribute = '#2D439B';
 RLTagValue = '#2D439B';
 RLErbTag = '#000000';
 RLCssTag = '#2D439B';
-RLCssId = '#000000';
-RLCssClass = '#000000';
+RLCssId = '#2D439B';
+RLCssClass = '#2D439B';
 RLCssPseudoClass = '#000000';
-RLCssProperty = '#000000';
-RLCssValue = '#000000';
+RLCssProperty = '#A62B29';
+RLCssValue = '#A62B29';
 RLCssUnit = '#0900D3';
 RLAtRule = '#006A08';
 
@@ -244,6 +244,34 @@ charcoal.themes["Ryan Light"] =
 			"String": RLStringLiteral,
 			"EscapeSequence": RLEscape,
 			"Number": RLNumber
+		},
+		"pascal": {
+			"Preprocessing": RLPreprocessing,
+			"Comment": RLComment,
+			"String": RLStringLiteral,
+			"ControlString": RLEscape,
+			"Integer": RLNumber,
+			"Real": RLNumber,
+			"Keyword": RLKeyword,
+			"Modifier": RLKeyword, // special type declaration keywords
+			"AddressOfIdentifier": RLInterpolation // color like Expansion in bash
+			// "Identifier": ... // not to be highlighted, only exists for speed!
+		},
+		"octave": {
+			"Comment": RLComment,
+			"BuiltinAtomic": RLBuiltinConstant,
+			"Builtin": RLBuiltinConstant,
+			"ReservedWord": RLKeyword,
+			"Integer": RLNumber,
+			"Float": RLNumber,
+			"SingleQuotedString": RLStringLiteral,
+			"DoubleQuotedString": RLStringLiteral,
+			"EscapeSequence": RLEscape,
+			"EscapedSingleQuote": RLEscape,
+			"Continuation": RLRegularExpression,
+			"FunctionHandle": RLInterpolation, // color like Expansion in bash
+			"Operator": RLOperator
+			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
 	

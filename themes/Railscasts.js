@@ -56,11 +56,11 @@ RCTagAttribute = '#E8BF6A';
 RCTagValue = '#E8BF6A';
 RCErbTag = '#E6E1DC';
 RCCssTag = '#E8BF6A';
-RCCssId = '#E6E1DC';
-RCCssClass = '#E6E1DC';
+RCCssId = '#E8BF6A';
+RCCssClass = '#E8BF6A';
 RCCssPseudoClass = '#E6E1DC';
-RCCssProperty = '#E6E1DC';
-RCCssValue = '#E6E1DC';
+RCCssProperty = '#6D9CBE';
+RCCssValue = '#6D9CBE';
 RCCssUnit = '#A5C261';
 RCAtRule = '#CC7833';
 
@@ -244,6 +244,34 @@ charcoal.themes["Railscasts"] =
 			"String": RCStringLiteral,
 			"EscapeSequence": RCEscape,
 			"Number": RCNumber
+		},
+		"pascal": {
+			"Preprocessing": RCPreprocessing,
+			"Comment": RCComment,
+			"String": RCStringLiteral,
+			"ControlString": RCEscape,
+			"Integer": RCNumber,
+			"Real": RCNumber,
+			"Keyword": RCKeyword,
+			"Modifier": RCKeyword, // special type declaration keywords
+			"AddressOfIdentifier": RCInterpolation // color like Expansion in bash
+			// "Identifier": ... // not to be highlighted, only exists for speed!
+		},
+		"octave": {
+			"Comment": RCComment,
+			"BuiltinAtomic": RCBuiltinConstant,
+			"Builtin": RCBuiltinConstant,
+			"ReservedWord": RCKeyword,
+			"Integer": RCNumber,
+			"Float": RCNumber,
+			"SingleQuotedString": RCStringLiteral,
+			"DoubleQuotedString": RCStringLiteral,
+			"EscapeSequence": RCEscape,
+			"EscapedSingleQuote": RCEscape,
+			"Continuation": RCRegularExpression,
+			"FunctionHandle": RCInterpolation, // color like Expansion in bash
+			"Operator": RCOperator
+			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
 	

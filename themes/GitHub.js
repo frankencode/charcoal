@@ -57,8 +57,8 @@ GHTagAttribute = '#008080';
 GHTagValue = '#000000';
 GHErbTag = '#000000';
 GHCssTag = '#000080';
-GHCssId = '#000000';
-GHCssClass = '#000000';
+GHCssId = '#000080';
+GHCssClass = '#000080';
 GHCssPseudoClass = '#000000';
 GHCssProperty = '#000000';
 GHCssValue = '#000000';
@@ -245,6 +245,34 @@ charcoal.themes["GitHub"] =
 			"String": GHStringLiteral,
 			"EscapeSequence": GHEscape,
 			"Number": GHNumber
+		},
+		"pascal": {
+			"Preprocessing": GHPreprocessing,
+			"Comment": GHComment,
+			"String": GHStringLiteral,
+			"ControlString": GHEscape,
+			"Integer": GHNumber,
+			"Real": GHNumber,
+			"Keyword": GHKeyword,
+			"Modifier": GHKeyword, // special type declaration keywords
+			"AddressOfIdentifier": GHInterpolation // color like Expansion in bash
+			// "Identifier": ... // not to be highlighted, only exists for speed!
+		},
+		"octave": {
+			"Comment": GHComment,
+			"BuiltinAtomic": GHBuiltinConstant,
+			"Builtin": GHBuiltinConstant,
+			"ReservedWord": GHKeyword,
+			"Integer": GHNumber,
+			"Float": GHNumber,
+			"SingleQuotedString": GHStringLiteral,
+			"DoubleQuotedString": GHStringLiteral,
+			"EscapeSequence": GHEscape,
+			"EscapedSingleQuote": GHEscape,
+			"Continuation": GHRegularExpression,
+			"FunctionHandle": GHInterpolation, // color like Expansion in bash
+			"Operator": GHOperator
+			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
 	

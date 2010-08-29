@@ -59,8 +59,8 @@ RBCssTag = '#FFFFFF';
 RBCssId = '#FFFFFF';
 RBCssClass = '#FFFFFF';
 RBCssPseudoClass = '#FFFFFF';
-RBCssProperty = '#FFFFFF';
-RBCssValue = '#FFFFFF';
+RBCssProperty = '#8AA6C1';
+RBCssValue = '#8AA6C1';
 RBCssUnit = '#EDDD3D';
 RBAtRule = '#F8BB00';
 
@@ -244,6 +244,34 @@ charcoal.themes["Ruby Blue"] =
 			"String": RBStringLiteral,
 			"EscapeSequence": RBEscape,
 			"Number": RBNumber
+		},
+		"pascal": {
+			"Preprocessing": RBPreprocessing,
+			"Comment": RBComment,
+			"String": RBStringLiteral,
+			"ControlString": RBEscape,
+			"Integer": RBNumber,
+			"Real": RBNumber,
+			"Keyword": RBKeyword,
+			"Modifier": RBKeyword, // special type declaration keywords
+			"AddressOfIdentifier": RBInterpolation // color like Expansion in bash
+			// "Identifier": ... // not to be highlighted, only exists for speed!
+		},
+		"octave": {
+			"Comment": RBComment,
+			"BuiltinAtomic": RBBuiltinConstant,
+			"Builtin": RBBuiltinConstant,
+			"ReservedWord": RBKeyword,
+			"Integer": RBNumber,
+			"Float": RBNumber,
+			"SingleQuotedString": RBStringLiteral,
+			"DoubleQuotedString": RBStringLiteral,
+			"EscapeSequence": RBEscape,
+			"EscapedSingleQuote": RBEscape,
+			"Continuation": RBRegularExpression,
+			"FunctionHandle": RBInterpolation, // color like Expansion in bash
+			"Operator": RBOperator
+			// "Identifier": ... // not to be highlighted, only exists for speed!
 		}
 	},
 	
