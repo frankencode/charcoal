@@ -59,6 +59,9 @@ charcoal.syntax["octave"] = function()
 			lt le gt ge eq ne \
 			and or not ctranspose transpose colon horzcat vertcat \
 			subsref subsasgn subsindex display \
+			\
+			ismatrix isvector iscell isscalar iscomplex \
+			length floor true false min max abs find warning error \
 		")
 /* FIXME: this language lacks OO design,...
 			stdin stdout sterr fopen fclose fseek ftell ferror fgets fputs fread fwrite \
