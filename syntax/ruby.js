@@ -426,19 +426,49 @@ charcoal.syntax["ruby"] = function()
 	
 	DEFINE("ClassDeclarationName",
 		GLUE(
-			PREVIOUS("DeclarationKeyword"), // incomplete HACK
-			INLINE("ClassDeclarationName")
+			PREVIOUS("DeclarationKeyword", "class"),
+			INLINE("ClassName")
 		)
 	);
 	
 	DEFINE("MethodDeclarationName",
 		GLUE(
-			PREVIOUS("DeclarationKeyword"), // incomplete HACK
+			PREVIOUS("DeclarationKeyword", "def"),
+			NOT(INLINE("Builtin")), /* e.g. "self" */
 			INLINE("LocalName")
 		)
 	);
 	
-	// missing here: "OperatorDeclarationName"?
+	DEFINE("ClassMethodDeclarationName",
+		GLUE(
+			PREVIOUS("DeclarationKeyword", "def"),
+			CHOICE(
+				REF("ClassName"),
+				REF("Builtin")
+			),
+			AHEAD(CHAR('.')),
+			REF("Operator"),
+			INLINE("LocalName")
+		)
+	);
+	
+	DEFINE("OperatorDeclarationName",
+		GLUE(
+			PREVIOUS("DeclarationKeyword", "def"),
+			KEYWORD("\
+				! ~ +@ \
+				** \
+				-@ \
+				* / % \
+				+ - \
+				<< >> \
+				& \
+				| ^ \
+				< <= >= > \
+				== === != =~ !~ <=> \
+			")
+		)
+	);
 	
 	DEFINE("ClassName",
 		GLUE(
@@ -561,7 +591,18 @@ charcoal.syntax["ruby"] = function()
 						REF("String"),
 						REF("Document"),
 						REF("Keyword"),
-						REF("DeclarationKeyword"),
+						GLUE(
+							REF("DeclarationKeyword"),
+							INLINE("Whitespace"),
+							REPEAT(0, 1,
+								CHOICE(
+									REF("ClassDeclarationName"),
+									REF("MethodDeclarationName"),
+									REF("ClassMethodDeclarationName"),
+									REF("OperatorDeclarationName")
+								)
+							)
+						),
 						REF("Builtin"),
 						REF("LocalName"),
 						REF("MemberName"),
