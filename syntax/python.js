@@ -48,7 +48,7 @@ charcoal.syntax["python"] = function()
 		)
 	);
 	
-	DEFINE("Comment", 
+	DEFINE("Comment",
 		GLUE(
 			CHAR('#'),
 			FIND(
