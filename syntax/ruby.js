@@ -103,7 +103,7 @@ charcoal.syntax["ruby"] = function()
 			"%= % " +
 			"... .. . " +
 			"^= ^ " +
-			"~@ ~ " +
+			"~ " +
 			"[ ] " +
 			":: ? : , ; "
 		)
@@ -424,6 +424,22 @@ charcoal.syntax["ruby"] = function()
 		)
 	);
 	
+	DEFINE("ParentModuleName", INLINE("ClassName"));
+	
+	DEFINE("ModuleName",
+		GLUE(
+			PREVIOUS("DeclarationKeyword", "module"),
+			REPEAT(
+				GLUE(
+					REF("ParentModuleName"),
+					AHEAD(STRING("::")),
+					REF("Operator")
+				)
+			),
+			INLINE("ClassName")
+		)
+	);
+	
 	DEFINE("ClassDeclarationName",
 		GLUE(
 			PREVIOUS("DeclarationKeyword", "class"),
@@ -596,6 +612,7 @@ charcoal.syntax["ruby"] = function()
 							INLINE("Whitespace"),
 							REPEAT(0, 1,
 								CHOICE(
+									REF("ModuleName"),
 									REF("ClassDeclarationName"),
 									REF("MethodDeclarationName"),
 									REF("ClassMethodDeclarationName"),
@@ -614,7 +631,8 @@ charcoal.syntax["ruby"] = function()
 						REF("ClosingBracket"),
 						REF("Float"),
 						REF("Integer"),
-						REF("Operator")
+						REF("Operator"),
+						REF("GlobalName")
 					)
 				)
 			)

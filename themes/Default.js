@@ -36,6 +36,8 @@ charcoal.themes["Default"] =
 			"Float": magenta,
 			"Symbol": darkCyan,
 			// "LocalName": black,
+			// "ParentModuleName": darkMagenta,
+			"ModuleName": darkMagenta,
 			"MemberName": darkMagenta,
 			"ClassDeclarationName": darkMagenta,
 			"MethodDeclarationName": darkBlue,
