@@ -300,7 +300,7 @@ charcoal.syntax["ruby"] = function()
 								SET("regex", false)
 							),
 							GLUE(
-								RANGE("Qx"),
+								RANGE("QWx"),
 								SET("doubleQuote", true),
 								SET("regex", false)
 							),
@@ -357,6 +357,10 @@ charcoal.syntax["ruby"] = function()
 								PREVIOUS("Float"),
 								PREVIOUS("String"),
 								PREVIOUS("LocalName"),
+								PREVIOUS("MemberName"),
+								PREVIOUS("ConstantName"),
+								PREVIOUS("ClassMemberName"),
+								PREVIOUS("GlobalName"),
 								PREVIOUS("ClosingBracket"),
 								PREVIOUS("DeclarationKeyword"),
 								PREVIOUS("Builtin")
