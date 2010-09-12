@@ -66,7 +66,7 @@ charcoal.syntax["ruby"] = function()
 				"when while " +
 				"yield " +
 				// from object.c:
-				"include new private protected public " +
+				"new private protected public " +
 				"require "
 			),
 			NOT(INLINE("NameChar"))
@@ -76,7 +76,7 @@ charcoal.syntax["ruby"] = function()
 	DEFINE("DeclarationKeyword",
 		GLUE(
 			NOT(PREVIOUS("Operator")),
-			KEYWORD("class def alias module"),
+			KEYWORD("class def alias module include"),
 			NOT(INLINE("NameChar"))
 		)
 	);
@@ -432,7 +432,10 @@ charcoal.syntax["ruby"] = function()
 	
 	DEFINE("ModuleName",
 		GLUE(
-			PREVIOUS("DeclarationKeyword", "module"),
+			CHOICE(
+				PREVIOUS("DeclarationKeyword", "module"),
+				PREVIOUS("DeclarationKeyword", "include"),
+			),
 			REPEAT(
 				GLUE(
 					REF("ParentModuleName"),
