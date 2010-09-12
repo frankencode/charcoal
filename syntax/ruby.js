@@ -434,7 +434,7 @@ charcoal.syntax["ruby"] = function()
 		GLUE(
 			CHOICE(
 				PREVIOUS("DeclarationKeyword", "module"),
-				PREVIOUS("DeclarationKeyword", "include"),
+				PREVIOUS("DeclarationKeyword", "include")
 			),
 			REPEAT(
 				GLUE(
