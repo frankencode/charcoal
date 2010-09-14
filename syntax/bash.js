@@ -140,7 +140,8 @@ charcoal.syntax["bash"] = function()
 			REF("FunctionDeclarationName"),
 			REPEAT(RANGE(" \t\r\n")),
 			CHAR('('),
-			FIND(CHAR(')'))
+			REPEAT(RANGE(" \t")),
+			CHAR(')')
 		)
 	);
 	
@@ -217,7 +218,11 @@ charcoal.syntax["bash"] = function()
 						REF("Builtin"),
 						REF("Expansion"),
 						REF("Integer"),
-						REF("Word")
+						REF("Word"),
+						GLUE(
+							CHAR('('),
+							INVOKE("bash", FIND(CHAR(')')))
+						)
 					)
 				)
 			)
