@@ -174,7 +174,7 @@ charcoal.themes["Default"] =
 			"EscapedChar": darkYellow,
 			"Expansion": darkMagenta,
 			// "Operator": black,
-			// "Builtin": black,
+			"Builtin": darkBlue,
 			"Reserved": { color: black, bold: true },
 			"Integer": blue,
 			"FunctionDeclarationName": darkBlue

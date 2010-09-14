@@ -110,8 +110,7 @@ charcoal.syntax["bash"] = function()
 			),
 			GLUE(
 				CHAR('`'),
-				INVOKE("bash"),
-				CHAR('`')
+				INVOKE("bash", FIND(CHAR('`')))
 			)
 		)
 	);
