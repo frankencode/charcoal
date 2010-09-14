@@ -103,16 +103,45 @@ charcoal.syntax["bash"] = function()
 					),
 					GLUE(
 						CHAR('('),
-						REPEAT(OTHER(')')),
+						INVOKE("bash"),
 						CHAR(')')
 					)
 				)
 			),
 			GLUE(
 				CHAR('`'),
-				REPEAT(OTHER('`')),
+				INVOKE("bash"),
 				CHAR('`')
 			)
+		)
+	);
+	
+	DEFINE("FunctionDeclarationName",
+		GLUE(
+			CHOICE(
+				RANGE('a', 'z'),
+				RANGE('A', 'Z'),
+				RANGE("-_")
+			),
+			REPEAT(
+				CHOICE(
+					RANGE('a', 'z'),
+					RANGE('A', 'Z'),
+					RANGE('0', '9'),
+					RANGE("-_")
+				)
+			)
+		)
+	);
+	
+	DEFINE("FunctionDeclaration",
+		GLUE(
+			PREVIOUS("Reserved", "function"),
+			REPEAT(RANGE(" \t\r\n")),
+			REF("FunctionDeclarationName"),
+			REPEAT(RANGE(" \t\r\n")),
+			CHAR('('),
+			FIND(CHAR(')'))
 		)
 	);
 	
@@ -170,19 +199,27 @@ charcoal.syntax["bash"] = function()
 	
 	DEFINE("BashSource",
 		REPEAT(
-			FIND(
-				CHOICE(
-					REPEAT(1, RANGE(" \t\r\n")),
-					REF("SingleQuoted"),
-					REF("DoubleQuoted"),
-					REF("Document"),
-					REF("Comment"),
-					REF("Operator"),
-					REF("Reserved"),
-					REF("Builtin"),
-					REF("Expansion"),
-					REF("Integer"),
-					REF("Word")
+			GLUE(
+				NOT(CHAR(')')),
+				FIND(
+					CHOICE(
+						REPEAT(1, RANGE(" \t\r\n")),
+						REF("SingleQuoted"),
+						REF("DoubleQuoted"),
+						REF("Document"),
+						REF("Comment"),
+						REF("Operator"),
+						GLUE(
+							REF("Reserved"),
+							REPEAT(0, 1,
+								REF("FunctionDeclaration")
+							)
+						),
+						REF("Builtin"),
+						REF("Expansion"),
+						REF("Integer"),
+						REF("Word")
+					)
 				)
 			)
 		)

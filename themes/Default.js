@@ -173,10 +173,11 @@ charcoal.themes["Default"] =
 			"Document": darkGreen,
 			"EscapedChar": darkYellow,
 			"Expansion": darkMagenta,
-			"Operator": black,
-			"Builtin": darkBlue,
+			// "Operator": black,
+			// "Builtin": black,
 			"Reserved": { color: black, bold: true },
-			"Integer": blue
+			"Integer": blue,
+			"FunctionDeclarationName": darkBlue
 		},
 		"cmake": {
 			"Comment": darkGray,
