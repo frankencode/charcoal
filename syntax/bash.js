@@ -116,19 +116,12 @@ charcoal.syntax["bash"] = function()
 	);
 	
 	DEFINE("FunctionDeclarationName",
-		GLUE(
+		REPEAT(1,
 			CHOICE(
 				RANGE('a', 'z'),
 				RANGE('A', 'Z'),
+				RANGE('0', '9'),
 				RANGE("-_")
-			),
-			REPEAT(
-				CHOICE(
-					RANGE('a', 'z'),
-					RANGE('A', 'Z'),
-					RANGE('0', '9'),
-					RANGE("-_")
-				)
 			)
 		)
 	);
