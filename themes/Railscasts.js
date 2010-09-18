@@ -221,6 +221,17 @@ charcoal.themes["Railscasts"] =
 			"Float": RCFloat,
 			"Char": RCCharacterConstant
 		},
+		"neko": {
+			"Comment": RCComment,
+			"Integer": RCInteger,
+			"Float": RCFloat,
+			"Boolean": RCBoolean,
+			"String": RCStringLiteral,
+			"EscapedChar": RCEscape,
+			"Builtin": RCBuiltinConstant,
+			"Operator": RCOperator,
+			"Keyword": RCKeyword
+		},
 		"bash": {
 			"Comment": RCComment,
 			"SingleQuoted": RCStringLiteral,
@@ -231,7 +242,8 @@ charcoal.themes["Railscasts"] =
 			"Operator": RCOperator,
 			"Builtin": RCBuiltinConstant,
 			"Reserved": RCKeyword,
-			"Integer": RCInteger
+			"Integer": RCInteger,
+			"FunctionDeclarationName": RCFunction
 		},
 		"cmake": {
 			"Comment": RCComment,

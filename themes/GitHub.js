@@ -222,6 +222,17 @@ charcoal.themes["GitHub"] =
 			"Float": GHFloat,
 			"Char": GHCharacterConstant
 		},
+		"neko": {
+			"Comment": GHComment,
+			"Integer": GHInteger,
+			"Float": GHFloat,
+			"Boolean": GHBoolean,
+			"String": GHStringLiteral,
+			"EscapedChar": GHEscape,
+			"Builtin": GHBuiltinConstant,
+			"Operator": GHOperator,
+			"Keyword": GHKeyword
+		},
 		"bash": {
 			"Comment": GHComment,
 			"SingleQuoted": GHStringLiteral,
@@ -232,7 +243,8 @@ charcoal.themes["GitHub"] =
 			"Operator": GHOperator,
 			"Builtin": GHBuiltinConstant,
 			"Reserved": GHKeyword,
-			"Integer": GHInteger
+			"Integer": GHInteger,
+			"FunctionDeclarationName": GHFunction
 		},
 		"cmake": {
 			"Comment": GHComment,

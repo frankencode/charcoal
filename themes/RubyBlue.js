@@ -221,6 +221,17 @@ charcoal.themes["Ruby Blue"] =
 			"Float": RBFloat,
 			"Char": RBCharacterConstant
 		},
+		"neko": {
+			"Comment": RBComment,
+			"Integer": RBInteger,
+			"Float": RBFloat,
+			"Boolean": RBBoolean,
+			"String": RBStringLiteral,
+			"EscapedChar": RBEscape,
+			"Builtin": RBBuiltinConstant,
+			"Operator": RBOperator,
+			"Keyword": RBKeyword
+		},
 		"bash": {
 			"Comment": RBComment,
 			"SingleQuoted": RBStringLiteral,
@@ -231,7 +242,8 @@ charcoal.themes["Ruby Blue"] =
 			"Operator": RBOperator,
 			"Builtin": RBBuiltinConstant,
 			"Reserved": RBKeyword,
-			"Integer": RBInteger
+			"Integer": RBInteger,
+			"FunctionDeclarationName": RBFunction
 		},
 		"cmake": {
 			"Comment": RBComment,

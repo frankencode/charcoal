@@ -221,6 +221,17 @@ charcoal.themes["Ryan Light"] =
 			"Float": RLFloat,
 			"Char": RLCharacterConstant
 		},
+		"neko": {
+			"Comment": RLComment,
+			"Integer": RLInteger,
+			"Float": RLFloat,
+			"Boolean": RLBoolean,
+			"String": RLStringLiteral,
+			"EscapedChar": RLEscape,
+			"Builtin": RLBuiltinConstant,
+			"Operator": RLOperator,
+			"Keyword": RLKeyword
+		},
 		"bash": {
 			"Comment": RLComment,
 			"SingleQuoted": RLStringLiteral,
@@ -231,7 +242,8 @@ charcoal.themes["Ryan Light"] =
 			"Operator": RLOperator,
 			"Builtin": RLBuiltinConstant,
 			"Reserved": RLKeyword,
-			"Integer": RLInteger
+			"Integer": RLInteger,
+			"FunctionDeclarationName": RLFunction
 		},
 		"cmake": {
 			"Comment": RLComment,
