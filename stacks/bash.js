@@ -2,7 +2,7 @@ charcoal.stacks["bash"] =
 {
 	title: "Bash",
 	syntax: "bash",
-	filename: [ "*.sh", "Makefile", "*.hxml" ],
+	filename: [ "*.sh", "Makefile", "*.hxml", "*.conf" ],
 	insight: {
 		syntax: "bash",
 		entities: {

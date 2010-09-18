@@ -166,6 +166,17 @@ charcoal.themes["Default"] =
 			"Float": darkMagenta,
 			"Char": magenta
 		},
+		"neko": {
+			"Comment": darkGray,
+			"Integer": blue,
+			"Float": magenta,
+			"Boolean": darkCyan,
+			"String": darkGreen,
+			"EscapedChar": darkYellow,
+			"Builtin": darkBlue,
+			// "Operator": black,
+			"Keyword": { color: black, bold: true }
+		},
 		"bash": {
 			"Comment": darkGray,
 			"SingleQuoted": darkGreen,
