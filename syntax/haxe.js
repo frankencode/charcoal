@@ -399,6 +399,13 @@ charcoal.syntax["haxe"] = function()
 		)
 	);
 	
+	DEFINE("Import",
+		GLUE(
+			PREVIOUS("Keyword", "import"),
+			REF("PackageIdentifier")
+		)
+	);
+	
 	DEFINE("HaxeSource",
 		REPEAT(
 			GLUE(
@@ -430,7 +437,8 @@ charcoal.syntax["haxe"] = function()
 											)
 										),
 										REF("Class"),
-										REF("Enum")
+										REF("Enum"),
+										REF("Import")
 									)
 								)
 							)
@@ -462,8 +470,7 @@ charcoal.syntax["haxe"] = function()
 						REF("PackageIdentifier")
 					)
 				)
-			)
-			,
+			),
 			REF("HaxeSource")
 		)
 	);
