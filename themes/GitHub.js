@@ -32,6 +32,7 @@ GHKeyword = {color: '#000000', bold: true};
 GHJavascriptKeyword = {color: '#000000', bold: true};
 GHObjcKeyword = {color: '#000000', bold: true};
 GHPreprocessing = '#DD1144';
+GHModuleName = '#008080';
 GHClassName = {color: '#445588', bold: true};
 GHRubyClassName = {color: '#445588', bold: true};
 GHConstantName = '#008080';
@@ -81,14 +82,17 @@ charcoal.themes["GitHub"] =
 			"Keyword": GHKeyword,
 			"DeclarationKeyword": GHKeyword,
 			"Builtin": GHBuiltinConstant,
+			"ParentModuleName": GHModuleName,
+			"ModuleName": GHModuleName,
 			"MemberName": GHRubyInstanceVariable,
 			"ClassMemberName": GHRubyClassVariable,
-			"ClassName": GHRubyClassName,
 			"ConstantName": GHConstantName,
 			"GlobalName": GHRubyGlobalVariable,
+			"ClassDeclarationName": GHRubyClassName,
+			"MethodDeclarationName": GHFunction,
+			"ClassMethodDeclarationName": GHRubyClassName,
+			"OperatorDeclarationName": GHFunction,
 			"Symbol": GHSymbol,
-			"OpeningBracket": GHArrayBracket,
-			"ClosingBracket": GHArrayBracket,
 			"Float": GHFloat,
 			"Integer": GHInteger,
 			"Operator": GHOperator,
@@ -218,6 +222,17 @@ charcoal.themes["GitHub"] =
 			"Float": GHFloat,
 			"Char": GHCharacterConstant
 		},
+		"neko": {
+			"Comment": GHComment,
+			"Integer": GHInteger,
+			"Float": GHFloat,
+			"Boolean": GHBoolean,
+			"String": GHStringLiteral,
+			"EscapedChar": GHEscape,
+			"Builtin": GHBuiltinConstant,
+			"Operator": GHOperator,
+			"Keyword": GHKeyword
+		},
 		"bash": {
 			"Comment": GHComment,
 			"SingleQuoted": GHStringLiteral,
@@ -228,7 +243,8 @@ charcoal.themes["GitHub"] =
 			"Operator": GHOperator,
 			"Builtin": GHBuiltinConstant,
 			"Reserved": GHKeyword,
-			"Integer": GHInteger
+			"Integer": GHInteger,
+			"FunctionDeclarationName": GHFunction
 		},
 		"cmake": {
 			"Comment": GHComment,

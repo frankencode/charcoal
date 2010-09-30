@@ -31,6 +31,7 @@ RBKeyword = '#F8BB00';
 RBJavascriptKeyword = '#F8BB00';
 RBObjcKeyword = '#F8BB00';
 RBPreprocessing = '#468434';
+RBModuleName = '#8AA6C1';
 RBClassName = '#FFFFFF';
 RBRubyClassName = '#FFFFFF';
 RBConstantName = '#8AA6C1';
@@ -80,14 +81,17 @@ charcoal.themes["Ruby Blue"] =
 			"Keyword": RBKeyword,
 			"DeclarationKeyword": RBKeyword,
 			"Builtin": RBBuiltinConstant,
+			"ParentModuleName": RBModuleName,
+			"ModuleName": RBModuleName,
 			"MemberName": RBRubyInstanceVariable,
 			"ClassMemberName": RBRubyClassVariable,
-			"ClassName": RBRubyClassName,
 			"ConstantName": RBConstantName,
 			"GlobalName": RBRubyGlobalVariable,
+			"ClassDeclarationName": RBRubyClassName,
+			"MethodDeclarationName": RBFunction,
+			"ClassMethodDeclarationName": RBRubyClassName,
+			"OperatorDeclarationName": RBFunction,
 			"Symbol": RBSymbol,
-			"OpeningBracket": RBArrayBracket,
-			"ClosingBracket": RBArrayBracket,
 			"Float": RBFloat,
 			"Integer": RBInteger,
 			"Operator": RBOperator,
@@ -217,6 +221,17 @@ charcoal.themes["Ruby Blue"] =
 			"Float": RBFloat,
 			"Char": RBCharacterConstant
 		},
+		"neko": {
+			"Comment": RBComment,
+			"Integer": RBInteger,
+			"Float": RBFloat,
+			"Boolean": RBBoolean,
+			"String": RBStringLiteral,
+			"EscapedChar": RBEscape,
+			"Builtin": RBBuiltinConstant,
+			"Operator": RBOperator,
+			"Keyword": RBKeyword
+		},
 		"bash": {
 			"Comment": RBComment,
 			"SingleQuoted": RBStringLiteral,
@@ -227,7 +242,8 @@ charcoal.themes["Ruby Blue"] =
 			"Operator": RBOperator,
 			"Builtin": RBBuiltinConstant,
 			"Reserved": RBKeyword,
-			"Integer": RBInteger
+			"Integer": RBInteger,
+			"FunctionDeclarationName": RBFunction
 		},
 		"cmake": {
 			"Comment": RBComment,

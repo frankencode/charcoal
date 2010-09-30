@@ -31,6 +31,7 @@ RCKeyword = '#CC7833';
 RCJavascriptKeyword = '#CC7833';
 RCObjcKeyword = '#FFC66D';
 RCPreprocessing = '#519F50';
+RCModuleName = '#DA4939';
 RCClassName = '#E6E1DC';
 RCRubyClassName = '#E6E1DC';
 RCConstantName = '#DA4939';
@@ -80,14 +81,17 @@ charcoal.themes["Railscasts"] =
 			"Keyword": RCKeyword,
 			"DeclarationKeyword": RCKeyword,
 			"Builtin": RCBuiltinConstant,
+			"ParentModuleName": RCModuleName,
+			"ModuleName": RCModuleName,
 			"MemberName": RCRubyInstanceVariable,
 			"ClassMemberName": RCRubyClassVariable,
-			"ClassName": RCRubyClassName,
 			"ConstantName": RCConstantName,
 			"GlobalName": RCRubyGlobalVariable,
+			"ClassDeclarationName": RCRubyClassName,
+			"MethodDeclarationName": RCFunction,
+			"ClassMethodDeclarationName": RCRubyClassName,
+			"OperatorDeclarationName": RCFunction,
 			"Symbol": RCSymbol,
-			"OpeningBracket": RCArrayBracket,
-			"ClosingBracket": RCArrayBracket,
 			"Float": RCFloat,
 			"Integer": RCInteger,
 			"Operator": RCOperator,
@@ -217,6 +221,17 @@ charcoal.themes["Railscasts"] =
 			"Float": RCFloat,
 			"Char": RCCharacterConstant
 		},
+		"neko": {
+			"Comment": RCComment,
+			"Integer": RCInteger,
+			"Float": RCFloat,
+			"Boolean": RCBoolean,
+			"String": RCStringLiteral,
+			"EscapedChar": RCEscape,
+			"Builtin": RCBuiltinConstant,
+			"Operator": RCOperator,
+			"Keyword": RCKeyword
+		},
 		"bash": {
 			"Comment": RCComment,
 			"SingleQuoted": RCStringLiteral,
@@ -227,7 +242,8 @@ charcoal.themes["Railscasts"] =
 			"Operator": RCOperator,
 			"Builtin": RCBuiltinConstant,
 			"Reserved": RCKeyword,
-			"Integer": RCInteger
+			"Integer": RCInteger,
+			"FunctionDeclarationName": RCFunction
 		},
 		"cmake": {
 			"Comment": RCComment,

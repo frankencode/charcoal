@@ -26,7 +26,7 @@ charcoal.themes["Default"] =
 			"BlockComment": darkGray,
 			"Keyword": { color: black, bold: true },
 			"DeclarationKeyword": { color: black, bold: true },
-			"Builtin": darkBlue,
+			"Builtin": darkRed,
 			"String": darkGreen,
 			"EscapeSequence": darkYellow,
 			"Interpolation": darkMagenta,
@@ -35,12 +35,18 @@ charcoal.themes["Default"] =
 			"Integer": blue,
 			"Float": magenta,
 			"Symbol": darkCyan,
-			"LocalName": black,
+			// "LocalName": black,
+			// "ParentModuleName": darkMagenta,
+			"ModuleName": darkMagenta,
 			"MemberName": darkMagenta,
-			"ClassMemberName": darkMagenta,
-			"ClassName": blue,
-			"ConstantName": blue,
-			"GlobalName": { color: black, bold: true }
+			"ClassDeclarationName": darkMagenta,
+			"MethodDeclarationName": darkBlue,
+			"ClassMethodDeclarationName": darkBlue,
+			"OperatorDeclarationName": darkBlue,
+			// "ClassMemberName": black,
+			// "ClassName": black,
+			// "ConstantName": black,
+			"GlobalName": darkRed // { color: black, bold: true }
 		},
 		"python": {
 			"Comment": darkGray,
@@ -160,6 +166,17 @@ charcoal.themes["Default"] =
 			"Float": darkMagenta,
 			"Char": magenta
 		},
+		"neko": {
+			"Comment": darkGray,
+			"Integer": blue,
+			"Float": magenta,
+			"Boolean": darkCyan,
+			"String": darkGreen,
+			"EscapedChar": darkYellow,
+			"Builtin": darkBlue,
+			// "Operator": black,
+			"Keyword": { color: black, bold: true }
+		},
 		"bash": {
 			"Comment": darkGray,
 			"SingleQuoted": darkGreen,
@@ -167,10 +184,11 @@ charcoal.themes["Default"] =
 			"Document": darkGreen,
 			"EscapedChar": darkYellow,
 			"Expansion": darkMagenta,
-			"Operator": black,
+			// "Operator": black,
 			"Builtin": darkBlue,
 			"Reserved": { color: black, bold: true },
-			"Integer": blue
+			"Integer": blue,
+			"FunctionDeclarationName": darkBlue
 		},
 		"cmake": {
 			"Comment": darkGray,

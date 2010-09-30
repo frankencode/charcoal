@@ -31,6 +31,7 @@ RLKeyword = '#006A08';
 RLJavascriptKeyword = '#006A08';
 RLObjcKeyword = '#820095';
 RLPreprocessing = '#26B31A';
+RLModuleName = '#A62B29';
 RLClassName = '#000000';
 RLRubyClassName = '#000000';
 RLConstantName = '#A62B29';
@@ -80,14 +81,17 @@ charcoal.themes["Ryan Light"] =
 			"Keyword": RLKeyword,
 			"DeclarationKeyword": RLKeyword,
 			"Builtin": RLBuiltinConstant,
+			"ParentModuleName": RLModuleName,
+			"ModuleName": RLModuleName,
 			"MemberName": RLRubyInstanceVariable,
 			"ClassMemberName": RLRubyClassVariable,
-			"ClassName": RLRubyClassName,
 			"ConstantName": RLConstantName,
 			"GlobalName": RLRubyGlobalVariable,
+			"ClassDeclarationName": RLRubyClassName,
+			"MethodDeclarationName": RLFunction,
+			"ClassMethodDeclarationName": RLRubyClassName,
+			"OperatorDeclarationName": RLFunction,
 			"Symbol": RLSymbol,
-			"OpeningBracket": RLArrayBracket,
-			"ClosingBracket": RLArrayBracket,
 			"Float": RLFloat,
 			"Integer": RLInteger,
 			"Operator": RLOperator,
@@ -217,6 +221,17 @@ charcoal.themes["Ryan Light"] =
 			"Float": RLFloat,
 			"Char": RLCharacterConstant
 		},
+		"neko": {
+			"Comment": RLComment,
+			"Integer": RLInteger,
+			"Float": RLFloat,
+			"Boolean": RLBoolean,
+			"String": RLStringLiteral,
+			"EscapedChar": RLEscape,
+			"Builtin": RLBuiltinConstant,
+			"Operator": RLOperator,
+			"Keyword": RLKeyword
+		},
 		"bash": {
 			"Comment": RLComment,
 			"SingleQuoted": RLStringLiteral,
@@ -227,7 +242,8 @@ charcoal.themes["Ryan Light"] =
 			"Operator": RLOperator,
 			"Builtin": RLBuiltinConstant,
 			"Reserved": RLKeyword,
-			"Integer": RLInteger
+			"Integer": RLInteger,
+			"FunctionDeclarationName": RLFunction
 		},
 		"cmake": {
 			"Comment": RLComment,
