@@ -114,8 +114,7 @@ charcoal.syntax["haxe"] = function()
 	DEFINE("BuiltInIdentifier",
 		GLUE(
 			KEYWORD(
-				"new \
-				 Void Float Int UInt Null Bool Dynamic    \
+				"Void Float Int UInt Null Bool Dynamic    \
 				 Iterator Iterable ArrayAccess            \
 				 Array Class Date Enum EReg               \
 				 Hash IntHash IntIter Lambda List Match   \
@@ -290,7 +289,12 @@ charcoal.syntax["haxe"] = function()
 		RANGE(" \t\n\r")
 	);
 	
-	DEFINE("FunctionIdentifier", INLINE("Identifier"));
+	DEFINE("FunctionIdentifier",
+		CHOICE(
+			INLINE("Identifier"),
+			STRING("new")
+		)
+	);
 	DEFINE("VariableIdentifier", INLINE("Identifier"));
 	DEFINE("ClassIdentifier",    INLINE("Identifier"));
 	DEFINE("EnumIdentifier",     INLINE("Identifier"));
@@ -308,7 +312,7 @@ charcoal.syntax["haxe"] = function()
 					CHOICE(
 						REPEAT(1, INLINE("Whitespace")),
 						REF("Keyword"),
-						REF("Identifier"),
+						REF("TypeIdentifier"),
 						REF("Macro"),
 						RANGE("?:,<->")
 					)
@@ -319,7 +323,7 @@ charcoal.syntax["haxe"] = function()
 				CHOICE(
 					REPEAT(1, INLINE("Whitespace")),
 					REF("Keyword"),
-					REF("Identifier"),
+					REF("TypeIdentifier"),
 					REF("Macro"),
 					RANGE("?:,<->")
 				)
