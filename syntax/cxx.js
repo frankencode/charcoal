@@ -47,39 +47,56 @@ charcoal.syntax["cxx"] = function()
 		)
 	);
 	
+	DEFINE_VOID("PreprocessingCommentBegin",
+		GLUE(
+			AHEAD(
+				GLUE(
+					REPEAT(RANGE(" \t")),
+					CHAR('#'),
+					REPEAT(RANGE(" \t")),
+					STRING("if"),
+					REPEAT(RANGE(" \t")),
+					CHAR('0'),
+					REPEAT(1, RANGE(" \t\n"))
+				)
+			),
+			REF("Preprocessing"),
+			CHAR('\n')
+		)
+	);
+	
+	DEFINE_VOID("PreprocessingCommentEnd",
+		GLUE(
+			AHEAD(
+				GLUE(
+					CHAR('\n'),
+					REPEAT(RANGE(" \t")),
+					CHAR('#'),
+					REPEAT(RANGE(" \t")),
+					CHOICE(
+						STRING("endif"),
+						STRING("else")
+					)
+				)
+			),
+			CHAR('\n'),
+			REF("Preprocessing")
+		)
+	);
+	
 	DEFINE("PreprocessingComment",
 		GLUE(
-			REPEAT(RANGE(" \t")),
-			CHAR('#'),
-			REPEAT(RANGE(" \t")),
-			STRING("if"),
-			REPEAT(RANGE(" \t")),
-			CHAR('0'),
-			REPEAT(1, RANGE(" \t\n")),
+			REF("PreprocessingCommentBegin"),
 			REPEAT(
 				CHOICE(
 					REF("PreprocessingConditional"),
 					GLUE(
-						NOT(
-							GLUE(
-								CHAR('\n'),
-								REPEAT(RANGE(" \t")),
-								CHAR('#'),
-								REPEAT(RANGE(" \t")),
-								STRING("endif")
-							)
-						),
+						NOT(REF("PreprocessingCommentEnd")),
 						ANY()
 					)
 				)
 			),
-			GLUE(
-				CHAR('\n'),
-				REPEAT(RANGE(" \t")),
-				CHAR('#'),
-				REPEAT(RANGE(" \t")),
-				STRING("endif")
-			)
+			REF("PreprocessingCommentEnd")
 		)
 	);
 	
