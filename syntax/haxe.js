@@ -122,7 +122,12 @@ charcoal.syntax["haxe"] = function()
 				 Type Xml"
 			),
 			NOT(
-				INLINE("SimpleIdentifier")
+				CHOICE(
+					RANGE('a', 'z'),
+					RANGE('A', 'Z'),
+					RANGE('0', '9'),
+					CHAR('_')
+				)
 			)
 		)
 	);
