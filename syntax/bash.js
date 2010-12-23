@@ -190,34 +190,55 @@ charcoal.syntax["bash"] = function()
 		)
 	);
 	
+	DEFINE("Switch",
+		GLUE(
+			PREVIOUS("Reserved", "case"),
+			REPEAT(
+				GLUE(
+					NOT(STRING("esac")),
+					CHOICE(
+						REF("BashEntity"),
+						ANY()
+					)
+				)
+			),
+			REF("Reserved")
+		)
+	);
+	
+	DEFINE_VOID("BashEntity",
+		CHOICE(
+			REPEAT(1, RANGE(" \t\r\n")),
+			REF("SingleQuoted"),
+			REF("DoubleQuoted"),
+			REF("Document"),
+			REF("Comment"),
+			REF("Operator"),
+			GLUE(
+				REF("Reserved"),
+				REPEAT(0, 1,
+					CHOICE(
+						REF("FunctionDeclaration"),
+						REF("Switch")
+					)
+				)
+			),
+			REF("Builtin"),
+			REF("Expansion"),
+			REF("Integer"),
+			REF("Word"),
+			GLUE(
+				CHAR('('),
+				INVOKE("bash", FIND(CHAR(')')))
+			)
+		)
+	);
+
 	DEFINE("BashSource",
 		REPEAT(
 			GLUE(
 				NOT(CHAR(')')),
-				FIND(
-					CHOICE(
-						REPEAT(1, RANGE(" \t\r\n")),
-						REF("SingleQuoted"),
-						REF("DoubleQuoted"),
-						REF("Document"),
-						REF("Comment"),
-						REF("Operator"),
-						GLUE(
-							REF("Reserved"),
-							REPEAT(0, 1,
-								REF("FunctionDeclaration")
-							)
-						),
-						REF("Builtin"),
-						REF("Expansion"),
-						REF("Integer"),
-						REF("Word"),
-						GLUE(
-							CHAR('('),
-							INVOKE("bash", FIND(CHAR(')')))
-						)
-					)
-				)
+				FIND(REF("BashEntity"))
 			)
 		)
 	);
