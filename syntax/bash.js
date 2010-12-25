@@ -3,9 +3,11 @@ charcoal.syntax["bash"] = function()
 	STATE_STRING("endOfDocument", "");
 	
 	DEFINE_VOID("WordTermination",
-		CHOICE(
-			INLINE("Operator"),
-			RANGE(" $\t\n")
+		AHEAD(
+			CHOICE(
+				INLINE("Operator"),
+				RANGE(" $\t\n")
+			)
 		)
 	);
 	
@@ -18,9 +20,7 @@ charcoal.syntax["bash"] = function()
 				 function if in select then until while \
 				 { } time [[ ]]                         "
 			),
-			AHEAD(
-				INLINE("WordTermination")
-			)
+			INLINE("WordTermination")
 		)
 	);
 	
@@ -35,9 +35,7 @@ charcoal.syntax["bash"] = function()
 				 readonly return set shift shopt suspend test      \
 				 times trap type ulimit umask unalias unset wait   "
 			),
-			AHEAD(
-				INLINE("WordTermination")
-			)
+			INLINE("WordTermination")
 		)
 	);
 	
@@ -72,11 +70,9 @@ charcoal.syntax["bash"] = function()
 					)
 				)
 			),
-			AHEAD(
-				CHOICE(
-					INLINE("WordTermination"),
-					EOI()
-				)
+			CHOICE(
+				INLINE("WordTermination"),
+				EOI()
 			)
 		)
 	);
