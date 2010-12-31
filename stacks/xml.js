@@ -1,4 +1,4 @@
-charcoal.stacks["html_xml"] =
+charcoal.stacks["xml"] =
 {
 	title: "HTML / XML",
 	syntax: "xml",
