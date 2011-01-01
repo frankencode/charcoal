@@ -223,8 +223,13 @@ charcoal.syntax["css"] = function()
 	);
 	
 	DEFINE("Unit",
-		KEYWORD(
-			"em ex px cm mm in pt pc deg rad grad ms s hz khz"
+		GLUE(
+			KEYWORD(
+				"em ex px cm mm in pt pc deg rad grad ms s hz khz"
+			),
+			NOT(
+				INLINE("String")
+			)
 		)
 	);
 	

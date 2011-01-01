@@ -141,6 +141,22 @@ charcoal.syntax["xml"] = function()
 		)
 	);
 	
+	DEFINE("StyleTagName",
+		CHOICE(
+			STRING("style"),
+			STRING("STYLE")
+		)
+	);
+	
+	DEFINE("StyleTag",
+		GLUE(
+			REF("TagOpen"),
+			REF("StyleTagName"),
+			REF("TagBody"),
+			REF("TagClose")
+		)
+	);
+	
 	DEFINE("Script",
 		GLUE(
 			REF("ScriptTag"),
@@ -155,6 +171,20 @@ charcoal.syntax["xml"] = function()
 		)
 	);
 	
+	DEFINE("Style",
+		GLUE(
+			REF("StyleTag"),
+			INVOKE("css",
+				FIND(
+					AHEAD(
+						INLINE("StyleTag")
+					)
+				)
+			),
+			REF("StyleTag")
+		)
+	);
+	
 	DEFINE("XmlSource",
 		REPEAT(
 			FIND(
@@ -162,6 +192,7 @@ charcoal.syntax["xml"] = function()
 					INLINE("Whitespace"),
 					REF("Comment"),
 					REF("Script"),
+					REF("Style"),
 					REF("Tag")
 				)
 			)

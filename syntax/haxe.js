@@ -94,7 +94,7 @@ charcoal.syntax["haxe"] = function()
 	
 	DEFINE_VOID("SimpleIdentifier",
 		GLUE(
-			NOT(REF("Keyword")),
+			NOT(INLINE("Keyword")),
 			CHOICE(
 				RANGE('a', 'z'),
 				RANGE('A', 'Z'),
