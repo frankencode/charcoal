@@ -138,6 +138,9 @@ charcoal.themes["Default"] =
 			"Comment": darkGray
 		},
 		"cxx": {
+			"DocCommentOpen": darkBlue,
+			"DocCommentClose": darkBlue,
+			"DocComment": darkGray,
 			"BlockComment": darkGray,
 			"LineComment": darkGray,
 			"PreprocessingComment": darkGray,
@@ -153,6 +156,11 @@ charcoal.themes["Default"] =
 			"Integer": blue,
 			"Float": darkMagenta,
 			"Char": magenta
+		},
+		"qdoc": {
+			"Format": darkBlue,
+			"OpeningParenthesis": darkBlue,
+			"ClosingParenthesis": darkBlue
 		},
 		"dao": {
 			"BlockComment": darkGray,

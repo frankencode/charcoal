@@ -1,5 +1,17 @@
 charcoal.syntax["cxx"] = function()
 {
+	DEFINE("DocCommentOpen", STRING("/*!"));
+	DEFINE("DocCommentClose", STRING("*/"));
+	
+	DEFINE("DocComment",
+		GLUE(
+			AHEAD(STRING("/*!")),
+			REF("DocCommentOpen"),
+			INVOKE("qdoc", FIND(AHEAD(STRING("*/")))),
+			REF("DocCommentClose")
+		)
+	);
+	
 	DEFINE("BlockComment",
 		GLUE(
 			STRING("/*"),
@@ -179,27 +191,27 @@ charcoal.syntax["cxx"] = function()
 		
 	DEFINE("Keyword",
 		GLUE(
-			KEYWORD(
-				"namespace using " +
-				"export template typename enum " +
-				"class union struct typedef friend operator " +
-				"public private protected " +
-				"virtual explicit inline throw " +
-				"auto register static extern mutable " +
-				"new delete new[] delete[] " +
-				"and and_eq asm bitand bitor " +
-				"break case catch " +
-				"compl const_cast continue default delete " +
-				"do dynamic_cast else " +
-				"false for " +
-				"goto if " +
-				"new not not_eq or " +
-				"or_eq reinterpret_cast " +
-				"return sizeof static_cast " +
-				"switch this true " +
-				"try typeid " +
-				"while " +
-				"xor xor_eq"
+			KEYWORD("\
+				namespace using \
+				export template typename enum \
+				class union struct typedef friend operator \
+				public private protected \
+				virtual explicit inline throw \
+				auto register static extern mutable \
+				new delete new[] delete[] \
+				and and_eq asm bitand bitor \
+				break case catch \
+				compl const_cast continue default delete \
+				do dynamic_cast else \
+				false for \
+				goto if \
+				new not not_eq or \
+				or_eq reinterpret_cast \
+				return sizeof static_cast \
+				switch this true \
+				try typeid \
+				while \
+				xor xor_eq"
 			),
 			NOT(INLINE("IdChar"))
 		)
@@ -207,17 +219,17 @@ charcoal.syntax["cxx"] = function()
 	
 	DEFINE("TypeKeyword",
 		GLUE(
-			KEYWORD(
-				"const volatile " +
-				"void " +
-				"signed unsigned " +
-				"long short " +
-				"int bool float double " +
-				"char wchar_t " +
-				"uint8_t uint16_t uint32_t uint64_t " +
-				"int8_t int16_t int32_t int64_t " +
-				"float32_t float64_t " +
-				"size_t ssize_t off_t "
+			KEYWORD("\
+				const volatile \
+				void \
+				signed unsigned \
+				long short \
+				int bool float double \
+				char wchar_t \
+				uint8_t uint16_t uint32_t uint64_t \
+				int8_t int16_t int32_t int64_t \
+				float32_t float64_t \
+				size_t ssize_t off_t"
 			),
 			NOT(INLINE("IdChar"))
 		)
@@ -235,11 +247,11 @@ charcoal.syntax["cxx"] = function()
 						)
 					)
 				),
-				KEYWORD(
-					"SIGNAL SLOT " +
-					"signals slots connect disconnect " +
-					"emit tr qobject_cast foreach " +
-					"qscriptvalue_cast"
+				KEYWORD("\
+					SIGNAL SLOT \
+					signals slots connect disconnect \
+					emit tr qobject_cast foreach \
+					qscriptvalue_cast"
 				)
 			),
 			NOT(INLINE("IdChar"))
@@ -249,12 +261,12 @@ charcoal.syntax["cxx"] = function()
 	DEFINE("ObjcKeyword",
 		GLUE(
 			CHAR('@'),
-			KEYWORD(
-				"interface implementation protocol end " +
-				"private protected public " +
-				"try catch throw finally " +
-				"property synthesize dynamic " +
-				"class selector protocol encode synchronized"
+			KEYWORD("\
+				interface implementation protocol end \
+				private protected public \
+				try catch throw finally \
+				property synthesize dynamic \
+				class selector protocol encode synchronized"
 			),
 			NOT(INLINE("IdChar"))
 		)
@@ -353,6 +365,7 @@ charcoal.syntax["cxx"] = function()
 			FIND(
 				CHOICE(
 					REPEAT(1, RANGE(" \t")),
+					REF("DocComment"),
 					REF("BlockComment"),
 					REF("LineComment"),
 					GLUE(
