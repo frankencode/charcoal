@@ -2,5 +2,5 @@ charcoal.stacks["javascript"] =
 {
 	title: "Javascript",
 	syntax: "javascript",
-	filename: [ "*.js", "*.json", "*.qml" ]
+	filename: [ "*.js", "*.json", "*.jsfl", "*.qml" ]
 };

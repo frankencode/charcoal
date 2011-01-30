@@ -20,7 +20,7 @@ charcoal.syntax["sql"] = function()
 					INLINE("BlockComment"),
 					INLINE("LineComment"),
 					GLUE(
-						NOT(STRING("* /")),
+						NOT(STRING("*/")),
 						ANY()
 					)
 				)
@@ -33,6 +33,74 @@ charcoal.syntax["sql"] = function()
 		CHOICE(
 			REF("LineComment"),
 			REF("BlockComment")
+		)
+	);
+	
+	DEFINE("Keyword",
+		GLUE(
+			KEYWORD("\
+				explain query plan \
+				alter table rename to add column \
+				analyze \
+				attach database as \
+				begin deferred immediate exclusive transaction \
+				commit end \
+				rollback savepoint \
+				release \
+				create unique index if not exists \
+				collate asc desc \
+				temp temporary \
+				primary foreign key references \
+				autoincrement null check default \
+				constraint \
+				on delete update set cascade restrict action \
+				deferrable initially immediate \
+				conflict abort fail ignore replace \
+				trigger before after instead of \
+				for each row when \
+				virtual using \
+				delete from where \
+				ordery by limit offset \
+				detach database \
+				drop view \
+				distinct cast like glob escape regexp match isnull notnull \
+				between and in else \
+				raise current_time current_date current_timestamp \
+				values pragma reindex group having \
+				natural left inner cross outer join \
+				union intersect except all \
+				indexed vaccuum "
+				// keywords from Sqlite documentation
+			),
+			NOT(
+				CHOICE(
+					RANGE('a', 'z'),
+					RANGE('A', 'Z'),
+					RANGE('0', '9'),
+					CHAR('_')
+				)
+			)
+		)
+	);
+	
+	DEFINE("Datatype",
+		GLUE(
+			KEYWORD("\
+				null integer real text blob \
+				int tinyint smallint mediumint bigint \
+				unsigned character varchar nchar \
+				double precision float numeric decimal boolean \
+				data datetime \
+				"
+			),
+			NOT(
+				CHOICE(
+					RANGE('a', 'z'),
+					RANGE('A', 'Z'),
+					RANGE('0', '9'),
+					CHAR('_')
+				)
+			)
 		)
 	);
 	
@@ -184,6 +252,8 @@ charcoal.syntax["sql"] = function()
 					REPEAT(1, RANGE(" \t\n\r\f")),
 					REF("Comment"),
 					REF("String"),
+					REF("Keyword"),
+					REF("Datatype"),
 					REF("Identifier"),
 					REF("Number"),
 					REF("Operator")

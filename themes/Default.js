@@ -204,7 +204,9 @@ charcoal.themes["Default"] =
 			"Comment": darkGray,
 			"String": darkGreen,
 			"EscapeSequence": darkYellow,
-			"Number": blue
+			"Number": blue,
+			"Keyword": darkBlue, // { color: black, bold: true },
+			"Datatype": darkRed
 		},
 		"pascal": {
 			"Preprocessing": darkGreen,
