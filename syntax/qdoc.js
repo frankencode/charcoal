@@ -25,13 +25,12 @@ charcoal.syntax["qdoc"] = function()
 		)
 	);
 	
-	DEFINE("OpeningParenthesis", CHAR('{'));
-	DEFINE("ClosingParenthesis", CHAR('}'));
+	DEFINE("OpeningOrClosingParenthesis", RANGE("{}"));
 	
 	DEFINE("Parenthesis",
 		GLUE(
 			AHEAD(CHAR('{')),
-			REF("OpeningParenthesis"),
+			REF("OpeningOrClosingParenthesis"),
 			REPEAT(
 				CHOICE(
 					IF("verbatim",
@@ -42,7 +41,8 @@ charcoal.syntax["qdoc"] = function()
 					OTHER('}')
 				)
 			),
-			REF("ClosingParenthesis")
+			AHEAD(CHAR('}')),
+			REF("OpeningOrClosingParenthesis")
 		)
 	);
 	

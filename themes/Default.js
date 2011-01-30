@@ -159,8 +159,7 @@ charcoal.themes["Default"] =
 		},
 		"qdoc": {
 			"Format": darkBlue,
-			"OpeningParenthesis": darkBlue,
-			"ClosingParenthesis": darkBlue
+			"OpeningOrClosingParenthesis": darkBlue
 		},
 		"dao": {
 			"BlockComment": darkGray,
