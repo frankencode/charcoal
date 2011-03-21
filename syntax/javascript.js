@@ -33,7 +33,9 @@ charcoal.syntax["javascript"] = function()
 			 continue function   this   with  \
 			 default  if         throw        \
 			 delete   in         try          \
-			 do       instanceof typeof       "
+			 do       instanceof typeof       " +
+			 // QtQuick keywords
+			"property alias signal on"
 		)
 	);
 	
@@ -47,6 +49,22 @@ charcoal.syntax["javascript"] = function()
 			 const    goto       private   transient    \
 			 debugger implements protected volatile     \
 			 double   import     public                 "
+		)
+	);
+	
+	DEFINE("BasicType", // QML basic type
+		GLUE(
+			KEYWORD(
+				"action bool color date double enumeration \
+				 font int list point real rect size string \
+				 time url variant vector3d"
+			),
+			AHEAD(
+				GLUE(
+					REPEAT(RANGE(" \t")),
+					INLINE("MemberName")
+				)
+			)
 		)
 	);
 	
@@ -199,22 +217,10 @@ charcoal.syntax["javascript"] = function()
 		)
 	);
 	
-	DEFINE("Identifier",
-		GLUE(
-			NOT(
-				INLINE("ReservedWord")
-			),
-			CHOICE(
-				REF("Key"),
-				REF("MemberName"),
-				REF("ClassName")
-			)
-		)
-	);
-	
 	DEFINE("ReservedWord",
 		GLUE(
 			CHOICE(
+				REF("BasicType"),
 				REF("Keyword"),
 				REF("FutureReservedWord"),
 				REF("NullLiteral"),
@@ -233,6 +239,7 @@ charcoal.syntax["javascript"] = function()
 	
 	DEFINE("MemberName",
 		GLUE(
+			NOT(INLINE("ReservedWord")),
 			RANGE('a', 'z'),
 			REPEAT(
 				CHOICE(
@@ -255,11 +262,17 @@ charcoal.syntax["javascript"] = function()
 					RANGE('0', '9'),
 					CHAR('_$')
 				)
+			),
+			NOT(
+				GLUE(
+					REPEAT(INLINE("Whitespace")),
+					CHAR('(')
+				)
 			)
 		)
 	);
 	
-	DEFINE("Key",
+	DEFINE_VOID("Identifier",
 		GLUE(
 			REF("MemberName"),
 			REPEAT(
@@ -267,11 +280,18 @@ charcoal.syntax["javascript"] = function()
 					CHAR('.'),
 					REF("MemberName")
 				)
-			),
+			)
+		)
+	);
+	
+	DEFINE("Key",
+		GLUE(
+			NOT(PREVIOUS("Punctuator", "?")),
+			REF("Identifier"),
 			AHEAD(
 				GLUE(
 					REPEAT(INLINE("Whitespace")),
-					CHAR(':')
+					RANGE(":{")
 				)
 			)
 		)
@@ -283,6 +303,8 @@ charcoal.syntax["javascript"] = function()
 				CHOICE(
 					REPEAT(1, RANGE(" \t\r")),
 					REF("Comment"),
+					REF("Key"),
+					REF("ClassName"),
 					REF("ReservedWord"),
 					REF("Identifier"),
 					REF("NumericLiteral"),

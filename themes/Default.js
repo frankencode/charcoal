@@ -65,6 +65,7 @@ charcoal.themes["Default"] =
 			"EscapeSequence": darkYellow,
 			"BackslashSequence": darkYellow,
 			"RegularExpressionLiteral": darkMagenta,
+			"BasicType": darkMagenta,
 			"ClassName": darkBlue,
 			"Key": darkRed
 		},
