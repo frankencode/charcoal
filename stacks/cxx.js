@@ -10,5 +10,6 @@ charcoal.stacks["cxx"] =
 		  "*.h", "*.c",
 		  /*"*.m",*/ "*.mm", // workaround HACK, fixes collision with Octave
 		  "*.y", "*.yy",
+		  "*.qdoc",
 		  "*.cstr" ]
 };

@@ -1,7 +1,7 @@
 charcoal.syntax["javascript"] = function()
 {
 	DEFINE_VOID("Whitespace",
-		REPEAT(1, RANGE(" \t\r"))
+		RANGE(" \t\n\r")
 	);
 	
 	DEFINE("BlockComment",
@@ -204,20 +204,10 @@ charcoal.syntax["javascript"] = function()
 			NOT(
 				INLINE("ReservedWord")
 			),
-			GLUE(
-				CHOICE(
-					RANGE('A', 'Z'),
-					RANGE('a', 'z'),
-					RANGE("_$")
-				),
-				REPEAT(
-					CHOICE(
-						RANGE('a', 'z'),
-						RANGE('A', 'Z'),
-						CHAR('_'),
-						RANGE('0', '9')
-					)
-				)
+			CHOICE(
+				REF("Key"),
+				REF("MemberName"),
+				REF("ClassName")
 			)
 		)
 	);
@@ -241,11 +231,57 @@ charcoal.syntax["javascript"] = function()
 		)
 	);
 	
+	DEFINE("MemberName",
+		GLUE(
+			RANGE('a', 'z'),
+			REPEAT(
+				CHOICE(
+					RANGE('a', 'z'),
+					RANGE('A', 'Z'),
+					RANGE('0', '9'),
+					CHAR('_$')
+				)
+			)
+		)
+	);
+	
+	DEFINE("ClassName",
+		GLUE(
+			RANGE('A', 'Z'),
+			REPEAT(
+				CHOICE(
+					RANGE('a', 'z'),
+					RANGE('A', 'Z'),
+					RANGE('0', '9'),
+					CHAR('_$')
+				)
+			)
+		)
+	);
+	
+	DEFINE("Key",
+		GLUE(
+			REF("MemberName"),
+			REPEAT(
+				GLUE(
+					CHAR('.'),
+					REF("MemberName")
+				)
+			),
+			AHEAD(
+				GLUE(
+					REPEAT(INLINE("Whitespace")),
+					CHAR(':')
+				)
+			)
+		)
+	);
+	
 	DEFINE("JavascriptSource",
 		REPEAT(
 			FIND(
 				CHOICE(
-					INLINE("Whitespace"),
+					REPEAT(1, RANGE(" \t\r")),
 					REF("Comment"),
 					REF("ReservedWord"),
 					REF("Identifier"),

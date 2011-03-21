@@ -1,14 +1,21 @@
 charcoal.syntax["cxx"] = function()
 {
-	DEFINE("DocCommentOpen", STRING("/*!"));
+	DEFINE("DocCommentOpen", CHOICE(STRING("/*!"), STRING("//!")));
 	DEFINE("DocCommentClose", STRING("*/"));
 	
 	DEFINE("DocComment",
-		GLUE(
-			AHEAD(STRING("/*!")),
-			REF("DocCommentOpen"),
-			INVOKE("qdoc", FIND(AHEAD(STRING("*/")))),
-			REF("DocCommentClose")
+		CHOICE(
+			GLUE(
+				AHEAD(STRING("/*!")),
+				REF("DocCommentOpen"),
+				INVOKE("qdoc", FIND(AHEAD(STRING("*/")))),
+				REF("DocCommentClose")
+			),
+			GLUE(
+				AHEAD(STRING("//!")),
+				REF("DocCommentOpen"),
+				INVOKE("qdoc", FIND(AHEAD(CHAR('\n'))))
+			)
 		)
 	);
 	

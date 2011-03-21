@@ -64,7 +64,9 @@ charcoal.themes["Default"] =
 			"StringLiteral": darkGreen,
 			"EscapeSequence": darkYellow,
 			"BackslashSequence": darkYellow,
-			"RegularExpressionLiteral": darkMagenta
+			"RegularExpressionLiteral": darkMagenta,
+			"ClassName": darkBlue,
+			"Key": darkRed
 		},
 		"as3": {
 			"Comment": darkGray,
@@ -158,8 +160,11 @@ charcoal.themes["Default"] =
 			"Char": magenta
 		},
 		"qdoc": {
-			"Format": darkBlue,
-			"OpeningOrClosingParenthesis": darkBlue
+			"Command": darkBlue,
+			"OpeningOrClosingParenthesis": darkBlue,
+			"Title": darkMagenta,
+			"Span": darkGray,
+			"VerbatimCodeBody": black
 		},
 		"dao": {
 			"BlockComment": darkGray,

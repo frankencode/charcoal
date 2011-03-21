@@ -1,6 +1,7 @@
 charcoal.syntax["qdoc"] = function()
 {
 	STATE_FLAG("verbatim", false);
+	STATE_STRING("codeEnd", "endcode");
 	
 	DEFINE("Word",
 		REPEAT(1,
@@ -23,6 +24,7 @@ charcoal.syntax["qdoc"] = function()
 			),
 			CHAR(')')
 		)
+		/*note: may contain C strings! */
 	);
 	
 	DEFINE("OpeningOrClosingParenthesis", RANGE("{}"));
@@ -46,7 +48,7 @@ charcoal.syntax["qdoc"] = function()
 		)
 	);
 	
-	DEFINE("Argument",
+	DEFINE("Span",
 		CHOICE(
 			GLUE(
 				REF("Word"),
@@ -69,7 +71,76 @@ charcoal.syntax["qdoc"] = function()
 			),
 			KEYWORD("\
 				c a i tt bold sub sup underline"
+			),
+			NOT(INLINE("Word")),
+			REPEAT(0, 1,
+				GLUE(
+					REPEAT(RANGE(' \t')),
+					REF("Span")
+				)
+			),
+			SET("verbatim", false)
+		)
+	);
+	
+	DEFINE("Title",
+		FIND(
+			AHEAD(
+				GLUE(
+					REPEAT(RANGE(" \t")),
+					CHAR('\n')
+				)
 			)
+		)
+	);
+	
+	DEFINE("Structure",
+		GLUE(
+			CHAR('\\'),
+			KEYWORD("\
+				part chapter section1 section2 section3 section4"
+			),
+			NOT(INLINE("Word")),
+			REPEAT(RANGE(" \t")),
+			REF("Title")
+		)
+	);
+	
+	DEFINE("VerbatimCodeBody",
+		INVOKE("cxx",
+			FIND(
+				AHEAD(
+					GLUE(
+						REPEAT(RANGE(" \t")),
+						CHAR('\\'),
+						VARSTRING("codeEnd")
+					)
+				)
+			)
+		)
+	);
+	
+	DEFINE("VerbatimCode",
+		GLUE(
+			CHAR('\\'),
+			CHOICE(
+				KEYWORD("code badcode"),
+				GLUE(
+					KEYWORD("oldcode"),
+					REPEAT(RANGE(" \t")),
+					SETSTRING("codeEnd", "newcode"),
+					REF("VerbatimCodeBody"),
+					SETSTRING("codeEnd", "endcode"),
+					REPEAT(RANGE(" \t")),
+					CHAR('\\'),
+					KEYWORD("newcode")
+				)
+			),
+			REPEAT(RANGE(" \t")),
+			REF("VerbatimCodeBody"),
+			REPEAT(RANGE(" \t")),
+			CHAR('\\'),
+			KEYWORD("endcode")
 		)
 	);
 	
@@ -78,16 +149,9 @@ charcoal.syntax["qdoc"] = function()
 			AHEAD(CHAR('\\')),
 			CHOICE(
 				STRING('\\\\'),
-				GLUE(
-					REF("Format"),
-					REPEAT(0, 1,
-						GLUE(
-							REPEAT(RANGE(' \t')),
-							REF("Argument")
-						)
-					),
-					SET("verbatim", false)
-				)
+				REF("Format"),
+				REF("Structure"),
+				REF("VerbatimCode")
 			)
 		)
 	);
