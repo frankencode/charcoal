@@ -35,7 +35,7 @@ charcoal.syntax["javascript"] = function()
 			 delete   in         try          \
 			 do       instanceof typeof       " +
 			 // QtQuick keywords
-			"property alias signal on"
+			"as property alias signal" // on
 		)
 	);
 	
@@ -68,9 +68,13 @@ charcoal.syntax["javascript"] = function()
 		)
 	);
 	
+	DEFINE("Brackets",
+		KEYWORD("( ) [ ]")
+	);
+	
 	DEFINE("Punctuator",
 		KEYWORD(
-			"{   }    (   )   [   ]   \
+			"{   }                    \
 			 .   ;    ,   <   >   <=  \
 			 >=  ==   !=  === !==     \
 			 +   -    *   %   ++  --  \
@@ -308,6 +312,7 @@ charcoal.syntax["javascript"] = function()
 					REF("ReservedWord"),
 					REF("Identifier"),
 					REF("NumericLiteral"),
+					REF("Brackets"),
 					REF("Punctuator"),
 					REF("DivPunctuator"),
 					REF("RegularExpressionLiteral"),

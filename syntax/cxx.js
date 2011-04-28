@@ -247,9 +247,11 @@ charcoal.syntax["cxx"] = function()
 			CHOICE(
 				GLUE(
 					STRING("Q_"),
-					REPEAT(1,
+					RANGE('A', 'Z'),
+					REPEAT(
 						CHOICE(
 							RANGE('A', 'Z'),
+							RANGE('0', '9'),
 							CHAR('_')
 						)
 					)
