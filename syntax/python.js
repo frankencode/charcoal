@@ -6,7 +6,7 @@ charcoal.syntax["python"] = function()
 	STATE_FLAG("triplet", false);
 	STATE_FLAG("unicode", false);
 	STATE_FLAG("raw", false);
-	
+
 	DEFINE("Keyword",
 		GLUE(
 			KEYWORD(
@@ -16,12 +16,13 @@ charcoal.syntax["python"] = function()
 				 break     except    import    print           \
 				 class     exec      in        raise           \
 				 continue  finally   is        return          \
-				 def       for       lambda    try             "
+				 def       for       lambda    try             \
+				 match     case      async     await           "
 			),
 			NOT(INLINE("Identifier"))
 		)
 	);
-	
+
 	DEFINE("Operator",
 		KEYWORD(
 			"+       -       *       **      /       //      %  \
@@ -29,7 +30,7 @@ charcoal.syntax["python"] = function()
 			 <       >       <=      >=      ==      !=      <> "
 		)
 	);
-	
+
 	DEFINE("Identifier",
 		GLUE(
 			CHOICE(
@@ -47,7 +48,7 @@ charcoal.syntax["python"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Comment",
 		GLUE(
 			CHAR('#'),
@@ -56,7 +57,7 @@ charcoal.syntax["python"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("String",
 		GLUE(
 			IF("stringIsOpen",
@@ -146,7 +147,7 @@ charcoal.syntax["python"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("EscapedChar",
 		GLUE(
 			CHAR('\\'),
@@ -202,7 +203,7 @@ charcoal.syntax["python"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Integer",
 		GLUE(
 			CHOICE(
@@ -236,7 +237,7 @@ charcoal.syntax["python"] = function()
 			REPEAT(0, 1, RANGE("lL"))
 		)
 	);
-	
+
 	DEFINE("Float",
 		GLUE(
 			REPEAT(1, RANGE('0', '9')),
@@ -264,7 +265,7 @@ charcoal.syntax["python"] = function()
 			NOT(CHAR('.'))
 		)
 	);
-	
+
 	DEFINE("PythonSource",
 		REPEAT(
 			GLUE(
@@ -284,6 +285,6 @@ charcoal.syntax["python"] = function()
 			)
 		)
 	);
-	
+
 	ENTRY("PythonSource");
 }

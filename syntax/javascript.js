@@ -3,28 +3,28 @@ charcoal.syntax["javascript"] = function()
 	DEFINE_VOID("Whitespace",
 		RANGE(" \t\n\r")
 	);
-	
+
 	DEFINE("BlockComment",
 		GLUE(
 			STRING("/*"),
 			FIND(STRING("*/"))
 		)
 	);
-	
+
 	DEFINE("LineComment",
 		GLUE(
 			STRING("//"),
 			FIND(AHEAD(CHAR('\n')))
 		)
 	);
-	
+
 	DEFINE("Comment",
 		CHOICE(
 			REF("BlockComment"),
 			REF("LineComment")
 		)
 	);
-	
+
 	DEFINE("Keyword",
 		KEYWORD(
 			"break    else       new    var   \
@@ -35,10 +35,10 @@ charcoal.syntax["javascript"] = function()
 			 delete   in         try          \
 			 do       instanceof typeof       " +
 			 // QtQuick keywords
-			"as property alias signal" // on
+			"as readonly property alias signal" // on
 		)
 	);
-	
+
 	DEFINE("FutureReservedWord",
 		KEYWORD(
 			"abstract enum       int       short        \
@@ -51,7 +51,7 @@ charcoal.syntax["javascript"] = function()
 			 double   import     public                 "
 		)
 	);
-	
+
 	DEFINE("BasicType", // QML basic type
 		GLUE(
 			KEYWORD(
@@ -67,11 +67,11 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Brackets",
 		KEYWORD("( ) [ ]")
 	);
-	
+
 	DEFINE("Punctuator",
 		KEYWORD(
 			"{   }                    \
@@ -84,7 +84,7 @@ charcoal.syntax["javascript"] = function()
 			 >>= >>>= &=  |=  ^=      "
 		)
 	);
-	
+
 	DEFINE("DivPunctuator",
 		GLUE(
 			NOT(
@@ -98,15 +98,15 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("NullLiteral",
 		KEYWORD("null")
 	);
-	
+
 	DEFINE("BooleanLiteral",
 		KEYWORD("true false")
 	);
-	
+
 	DEFINE("HexDigit",
 		CHOICE(
 			RANGE('0', '9'),
@@ -114,7 +114,7 @@ charcoal.syntax["javascript"] = function()
 			RANGE('A', 'F')
 		)
 	);
-	
+
 	DEFINE("EscapeSequence",
 		GLUE(
 			CHAR('\\'),
@@ -135,7 +135,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("StringLiteral",
 		CHOICE(
 			GLUE(
@@ -160,7 +160,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("DecimalLiteral",
 		GLUE(
 			CHOICE(
@@ -183,7 +183,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("HexIntegerLiteral",
 		GLUE(
 			CHAR('0'),
@@ -191,21 +191,21 @@ charcoal.syntax["javascript"] = function()
 			REPEAT(1, INLINE("HexDigit"))
 		)
 	);
-	
+
 	DEFINE("NumericLiteral",
 		CHOICE(
 			REF("HexIntegerLiteral"),
 			REF("DecimalLiteral")
 		)
 	);
-	
+
 	DEFINE("BackslashSequence",
 		GLUE(
 			CHAR('\\'),
 			OTHER('\n')
 		)
 	);
-	
+
 	DEFINE("RegularExpressionLiteral",
 		GLUE(
 			CHAR('/'),
@@ -220,7 +220,7 @@ charcoal.syntax["javascript"] = function()
 			REPEAT(0, 4, RANGE("gimy"))
 		)
 	);
-	
+
 	DEFINE("ReservedWord",
 		GLUE(
 			CHOICE(
@@ -240,7 +240,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("MemberName",
 		GLUE(
 			NOT(INLINE("ReservedWord")),
@@ -255,7 +255,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("ClassName",
 		GLUE(
 			RANGE('A', 'Z'),
@@ -275,7 +275,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE_VOID("Identifier",
 		GLUE(
 			REF("MemberName"),
@@ -287,7 +287,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Key",
 		GLUE(
 			NOT(PREVIOUS("Punctuator", "?")),
@@ -300,7 +300,7 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("JavascriptSource",
 		REPEAT(
 			FIND(
@@ -321,6 +321,6 @@ charcoal.syntax["javascript"] = function()
 			)
 		)
 	);
-	
+
 	ENTRY("JavascriptSource");
 }

@@ -2,7 +2,7 @@ charcoal.syntax["cxx"] = function()
 {
 	DEFINE("DocCommentOpen", CHOICE(STRING("/*!"), STRING("//!")));
 	DEFINE("DocCommentClose", STRING("*/"));
-	
+
 	DEFINE("DocComment",
 		CHOICE(
 			GLUE(
@@ -18,21 +18,21 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("BlockComment",
 		GLUE(
 			STRING("/*"),
 			FIND(STRING("*/"))
 		)
 	);
-	
+
 	DEFINE("LineComment",
 		GLUE(
 			STRING("//"),
 			FIND(AHEAD(CHAR('\n')))
 		)
 	);
-	
+
 	DEFINE_VOID("PreprocessingConditional",
 		GLUE(
 			REPEAT(RANGE(" \t")),
@@ -65,7 +65,7 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE_VOID("PreprocessingCommentBegin",
 		GLUE(
 			AHEAD(
@@ -83,7 +83,7 @@ charcoal.syntax["cxx"] = function()
 			CHAR('\n')
 		)
 	);
-	
+
 	DEFINE_VOID("PreprocessingCommentEnd",
 		GLUE(
 			AHEAD(
@@ -102,7 +102,7 @@ charcoal.syntax["cxx"] = function()
 			REF("Preprocessing")
 		)
 	);
-	
+
 	DEFINE("PreprocessingComment",
 		GLUE(
 			REF("PreprocessingCommentBegin"),
@@ -118,7 +118,7 @@ charcoal.syntax["cxx"] = function()
 			REF("PreprocessingCommentEnd")
 		)
 	);
-	
+
 	DEFINE("Preprocessing",
 		GLUE(
 			REPEAT(RANGE(" \t")),
@@ -133,7 +133,7 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("EscapedChar",
 		GLUE(
 			CHAR('\\'),
@@ -143,7 +143,7 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("String",
 		GLUE(
 			CHAR('"'),
@@ -156,11 +156,11 @@ charcoal.syntax["cxx"] = function()
 			CHAR('"')
 		)
 	);
-	
+
 	DEFINE("ObjcEscapedChar",
 		INLINE("EscapedChar")
 	);
-	
+
 	DEFINE("ObjcString",
 		GLUE(
 			CHAR('@'),
@@ -174,7 +174,7 @@ charcoal.syntax["cxx"] = function()
 			CHAR('"')
 		)
 	);
-	
+
 	DEFINE("Punctuator",
 		KEYWORD(
 			"{    }    (    )    [    ]    :   ... ; \
@@ -186,7 +186,7 @@ charcoal.syntax["cxx"] = function()
 			 &&   ||   ++   --   ->   ->*            "
 		)
 	);
-	
+
 	DEFINE_VOID("IdChar",
 		CHOICE(
 			RANGE('a', 'z'),
@@ -195,7 +195,7 @@ charcoal.syntax["cxx"] = function()
 			CHAR('_')
 		)
 	);
-		
+
 	DEFINE("Keyword",
 		GLUE(
 			KEYWORD("\
@@ -218,16 +218,18 @@ charcoal.syntax["cxx"] = function()
 				switch this true \
 				try typeid \
 				while \
-				xor xor_eq"
+				xor xor_eq \
+				constexpr import \
+				nullptr static_assert"
 			),
 			NOT(INLINE("IdChar"))
 		)
 	);
-	
+
 	DEFINE("TypeKeyword",
 		GLUE(
 			KEYWORD("\
-				const volatile \
+				const volatile override \
 				void \
 				signed unsigned \
 				long short \
@@ -241,7 +243,7 @@ charcoal.syntax["cxx"] = function()
 			NOT(INLINE("IdChar"))
 		)
 	);
-	
+
 	DEFINE("QtKeyword",
 		GLUE(
 			CHOICE(
@@ -266,7 +268,7 @@ charcoal.syntax["cxx"] = function()
 			NOT(INLINE("IdChar"))
 		)
 	);
-	
+
 	DEFINE("ObjcKeyword",
 		GLUE(
 			CHAR('@'),
@@ -280,7 +282,7 @@ charcoal.syntax["cxx"] = function()
 			NOT(INLINE("IdChar"))
 		)
 	);
-	
+
 	DEFINE("Name",
 		GLUE(
 			CHOICE(
@@ -298,7 +300,7 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Identifier",
 		REPEAT(1,
 			GLUE(
@@ -307,7 +309,7 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Integer",
 		GLUE(
 			CHOICE(
@@ -328,7 +330,7 @@ charcoal.syntax["cxx"] = function()
 			REPEAT(0, 2, RANGE("lL"))
 		)
 	);
-	
+
 	DEFINE("Float",
 		GLUE(
 			CHOICE(
@@ -357,7 +359,7 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Char",
 		GLUE(
 			CHAR('\''),
@@ -368,7 +370,7 @@ charcoal.syntax["cxx"] = function()
 			CHAR('\'')
 		)
 	);
-	
+
 	DEFINE("CxxSource",
 		REPEAT(
 			FIND(
@@ -404,6 +406,6 @@ charcoal.syntax["cxx"] = function()
 			)
 		)
 	);
-	
+
 	ENTRY("CxxSource");
 }

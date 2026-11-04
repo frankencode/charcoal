@@ -1,7 +1,7 @@
 charcoal.syntax["bash"] = function()
 {
 	STATE_STRING("endOfDocument", "");
-	
+
 	DEFINE_VOID("WordTermination",
 		AHEAD(
 			CHOICE(
@@ -10,9 +10,9 @@ charcoal.syntax["bash"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Operator", KEYWORD("|| & && ; ;; ( ) | ="));
-	
+
 	DEFINE("Reserved",
 		GLUE(
 			KEYWORD(
@@ -23,7 +23,7 @@ charcoal.syntax["bash"] = function()
 			INLINE("WordTermination")
 		)
 	);
-	
+
 	DEFINE("Builtin",
 		GLUE(
 			KEYWORD(
@@ -38,7 +38,7 @@ charcoal.syntax["bash"] = function()
 			INLINE("WordTermination")
 		)
 	);
-	
+
 	DEFINE("Word",
 		REPEAT(1,
 			GLUE(
@@ -47,7 +47,7 @@ charcoal.syntax["bash"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("Integer",
 		GLUE(
 			CHOICE(
@@ -76,13 +76,24 @@ charcoal.syntax["bash"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("EscapedChar",
 		GLUE(
-			CHAR('\\'), OTHER('\n')
+			CHAR('\\'),
+			CHOICE(
+				REPEAT(1, 3, RANGE('0', '9')),
+				OTHER('\n')
+			)
 		)
 	);
-	
+
+	DEFINE("ArithmeticExpansion",
+		GLUE(
+			STRING("$(("),
+			FIND(STRING("))"))
+		)
+	);
+
 	DEFINE("Expansion",
 		CHOICE(
 			GLUE(
@@ -110,7 +121,7 @@ charcoal.syntax["bash"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("FunctionDeclarationName",
 		REPEAT(1,
 			CHOICE(
@@ -121,26 +132,32 @@ charcoal.syntax["bash"] = function()
 			)
 		)
 	);
-	
+
 	DEFINE("FunctionDeclaration",
 		GLUE(
-			PREVIOUS("Reserved", "function"),
-			REPEAT(RANGE(" \t\r\n")),
+			// PREVIOUS("Reserved", "function"),
+			// REPEAT(RANGE(" \t\r\n")),
 			REF("FunctionDeclarationName"),
 			REPEAT(RANGE(" \t\r\n")),
 			CHAR('('),
 			REPEAT(RANGE(" \t")),
-			CHAR(')')
+			CHAR(')'),
+			AHEAD(
+				GLUE(
+					REPEAT(RANGE(" \t\r\n")),
+					CHAR('{')
+				)
+			)
 		)
 	);
-	
+
 	DEFINE("SingleQuoted",
 		GLUE(
 			CHAR('\''),
 			FIND(CHAR('\''))
 		)
 	);
-	
+
 	DEFINE("DoubleQuoted",
 		GLUE(
 			CHAR('"'),
@@ -154,7 +171,7 @@ charcoal.syntax["bash"] = function()
 			CHAR('"')
 		)
 	);
-	
+
 	DEFINE("Document",
 		GLUE(
 			STRING("<<"),
@@ -178,14 +195,14 @@ charcoal.syntax["bash"] = function()
 			VARSTRING("endOfDocument")
 		)
 	);
-	
+
 	DEFINE("Comment",
 		GLUE(
 			CHAR('#'),
 			FIND(CHAR('\n'))
 		)
 	);
-	
+
 	DEFINE("Switch",
 		GLUE(
 			PREVIOUS("Reserved", "case"),
@@ -201,7 +218,7 @@ charcoal.syntax["bash"] = function()
 			REF("Reserved")
 		)
 	);
-	
+
 	DEFINE_VOID("BashEntity",
 		CHOICE(
 			REPEAT(1, RANGE(" \t\r\n")),
@@ -212,14 +229,11 @@ charcoal.syntax["bash"] = function()
 			REF("Operator"),
 			GLUE(
 				REF("Reserved"),
-				REPEAT(0, 1,
-					CHOICE(
-						REF("FunctionDeclaration"),
-						REF("Switch")
-					)
-				)
+				REPEAT(0, 1, REF("Switch"))
 			),
+			REF("FunctionDeclaration"),
 			REF("Builtin"),
+			REF("ArithmeticExpansion"),
 			REF("Expansion"),
 			REF("Integer"),
 			REF("Word"),
@@ -232,12 +246,15 @@ charcoal.syntax["bash"] = function()
 
 	DEFINE("BashSource",
 		REPEAT(
-			GLUE(
-				NOT(CHAR(')')),
-				FIND(REF("BashEntity"))
+		    CHOICE(
+				GLUE(
+					NOT(CHAR(')')),
+					FIND(REF("BashEntity"))
+				),
+				ANY()
 			)
 		)
 	);
-	
+
 	ENTRY("BashSource");
 }
